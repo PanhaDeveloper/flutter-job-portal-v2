@@ -9,6 +9,9 @@ class TextFormFieldWidget extends StatelessWidget {
   final VoidCallback? onTap;
   final String? Function(String?)? validator;
   final IconData? passwordToggleIcon;
+  final Widget? prefixIcon;
+  final int? maxLines;
+  final TextInputType keyboardType;
 
   const TextFormFieldWidget({
     super.key,
@@ -19,15 +22,21 @@ class TextFormFieldWidget extends StatelessWidget {
     this.isObscure = false,
     this.onTap,
     this.passwordToggleIcon,
+    this.prefixIcon,
+    this.maxLines = 1,
+    this.keyboardType = TextInputType.text,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       controller: controller,
       validator: validator,
       style: const TextStyle(color: Colors.black),
+      keyboardType: keyboardType,
       decoration: InputDecoration(
+        prefixIcon: prefixIcon,
         hintText: hintText,
         suffixIcon:
             isPassword
@@ -42,6 +51,7 @@ class TextFormFieldWidget extends StatelessWidget {
                   ),
                 )
                 : null,
+        hintStyle: TextStyle(color: Colors.grey.shade500),
       ),
       obscureText: isObscure,
     );

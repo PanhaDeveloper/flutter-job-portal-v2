@@ -5,10 +5,12 @@ import 'package:quiz_app/features/auth/screen/auth_success_screen.dart';
 import 'package:quiz_app/features/auth/screen/forgot_password_screen.dart';
 import 'package:quiz_app/features/auth/screen/otp_screen.dart';
 import 'package:quiz_app/features/auth/screen/reset_password_screen.dart';
+import 'package:quiz_app/features/home/accounts/screens/personal_profile_screen.dart';
 import 'package:quiz_app/features/onboarding/binding/onboarding_binding.dart';
 import 'package:quiz_app/features/splash/binding/splash_binding.dart';
 import 'package:quiz_app/features/splash/screen/splash_screen.dart';
 import 'package:quiz_app/features/onboarding/screen/boarding_screen.dart';
+import 'package:quiz_app/navigate.dart';
 import 'package:quiz_app/routes/app_routes.dart';
 
 final appPages = [
@@ -43,4 +45,8 @@ final appPages = [
   GetPage(name: AppRoutes.otp, page: () => OtpScreen(), binding: AuthBinding()),
 
   GetPage(name: AppRoutes.authSuccess, page: () => AuthSuccessScreen()),
+
+  GetPage(name: AppRoutes.home, page: () => AppNavigateBar()),
+
+  GetPage(name: AppRoutes.personalProfile, page: () => PersonalProfileScreen()),
 ];

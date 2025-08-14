@@ -6,6 +6,9 @@ class ButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
   final Color btnBgColor, btnTextColor;
   final String btnTitle;
+  final double borderRadius;
+  final bool isIcon;
+  final IconData? icon;
 
   const ButtonWidget({
     super.key,
@@ -15,6 +18,8 @@ class ButtonWidget extends StatelessWidget {
     required this.btnTitle,
     this.btnTextColor = Colors.white,
     this.height = 45,
+    this.borderRadius = 25,
+    this.isIcon = false, this.icon,
   });
 
   @override
@@ -27,18 +32,30 @@ class ButtonWidget extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: btnBgColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(borderRadius),
+            side: BorderSide.none,
           ),
           padding: EdgeInsets.symmetric(vertical: 18),
           elevation: 0,
+          splashFactory: NoSplash.splashFactory,
         ),
-        child: Text(
-          btnTitle,
-          style: TextStyle(
-            color: btnTextColor,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (isIcon) ...[
+              Icon(icon, color: btnTextColor),
+              const SizedBox(width: 10),
+            ],
+            Text(
+              btnTitle,
+              style: TextStyle(
+                color: btnTextColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ],
         ),
       ),
     );

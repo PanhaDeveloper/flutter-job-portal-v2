@@ -6,11 +6,13 @@ class FormFieldWidget extends StatelessWidget {
   final String textTitle;
   final double horizontalPadding;
   final Widget? formField;
+  final Color? titleColor;
 
   const FormFieldWidget({
     super.key,
     required this.textTitle,
-    this.horizontalPadding = 15, 
+    this.horizontalPadding = 15,
+    this.titleColor = AppColors.black,
     this.formField,
   });
 
@@ -26,7 +28,7 @@ class FormFieldWidget extends StatelessWidget {
             textTitle,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: AppColors.black,
+              color: titleColor,
               fontSize: 16,
             ),
           ),
