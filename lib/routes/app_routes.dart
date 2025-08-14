@@ -8,4 +8,5 @@ class AppRoutes {
   static const String otp = '/otp';
   static const String authSuccess = '/auth-success';
   static const String personalProfile = '/personal-profile';
+  static const String notification = '/notification';
 }
