@@ -18,12 +18,14 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      leading: GestureDetector(onTap: () => Get.back(), child: AppBarIcon()),
+      leading: isLeading
+          ? GestureDetector(onTap: () => Get.back(), child: AppBarIcon())
+          : null,
       title: Text(
         title,
         style: const TextStyle(
           color: Colors.black,
-          fontSize: 18,
+          fontSize: 20,
           fontWeight: FontWeight.w600,
         ),
       ),

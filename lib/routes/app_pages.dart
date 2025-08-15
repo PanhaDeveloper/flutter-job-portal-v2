@@ -5,6 +5,7 @@ import 'package:quiz_app/features/auth/screen/auth_success_screen.dart';
 import 'package:quiz_app/features/auth/screen/forgot_password_screen.dart';
 import 'package:quiz_app/features/auth/screen/otp_screen.dart';
 import 'package:quiz_app/features/auth/screen/reset_password_screen.dart';
+import 'package:quiz_app/features/home/accounts/screens/change_password_screen.dart';
 import 'package:quiz_app/features/home/accounts/screens/personal_profile_screen.dart';
 import 'package:quiz_app/features/home/notification/screens/notification_screen.dart';
 import 'package:quiz_app/features/onboarding/binding/onboarding_binding.dart';
@@ -52,4 +53,6 @@ final appPages = [
   GetPage(name: AppRoutes.personalProfile, page: () => PersonalProfileScreen()),
 
   GetPage(name: AppRoutes.notification, page: () => NotificationScreen()),
+
+  GetPage(name: AppRoutes.changePassword, page: () => ChangePasswordScreen()),
 ];

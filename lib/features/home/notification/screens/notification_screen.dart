@@ -26,6 +26,7 @@ class NotificationScreen extends StatelessWidget {
               description:
                   'Congratulations! You have been invited for an interview by Gojek. Your interview schedule is available in your calendar.',
               time: '10 Minutes',
+              cardColor: Colors.white,
             ),
             NotificationCard(
               icon: Icons.bar_chart,
@@ -33,6 +34,7 @@ class NotificationScreen extends StatelessWidget {
               description:
                   'our application status has been updated. Your application for Software Engineer at Gojek is currently under review.',
               time: '1 Hour',
+              cardColor: Colors.white,
             ),
           ],
         ),

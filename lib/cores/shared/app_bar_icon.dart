@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/cores/utils/constants/colors.dart';
 class AppBarIcon extends StatelessWidget {
   final IconData icon;
   const AppBarIcon({
@@ -11,7 +12,7 @@ class AppBarIcon extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: AppColors.boldPrimary,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Icon(icon, color: Colors.white, size: 20),

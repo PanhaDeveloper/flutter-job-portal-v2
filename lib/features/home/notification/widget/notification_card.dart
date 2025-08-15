@@ -20,7 +20,7 @@ class NotificationCard extends StatelessWidget {
     required this.time,
     this.isBorderBottom = false,
     this.cardColor = const Color.fromARGB(146, 216, 229, 248),
-    this.timeColor = AppColors.textSecondary,
+    this.timeColor = AppColors.boldPrimary,
     this.borderColor = const Color.fromARGB(255, 227, 232, 240), this.onTap,
   });
 
@@ -47,8 +47,8 @@ class NotificationCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   minRadius: 15,
-                  backgroundColor: Colors.blue.withOpacity(0.1),
-                  child: Icon(icon, color: Colors.blue, size: 15),
+                  backgroundColor: AppColors.boldPrimary.withOpacity(0.1),
+                  child: Icon(icon, color: AppColors.boldPrimary, size: 18),
                 ),
                 SizedBox(width: 16.0),
                 Expanded(

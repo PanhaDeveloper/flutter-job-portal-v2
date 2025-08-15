@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:quiz_app/features/home/accounts/screens/account_screen.dart';
+import 'package:quiz_app/features/home/fav/screens/favorite_screen.dart';
 import 'package:quiz_app/features/home/screen/home_screen.dart';
 import 'package:quiz_app/features/home/widgets/custom_navigate.dart';
 
@@ -10,7 +11,7 @@ class AppNavigateController extends GetxController {
   RxInt selectIndex = 0.obs;
   final List<Widget> screens = [
     const HomeScreen(),
-    const Center(child: Text('Favorite Screen')),
+    const FavoriteScreen(),
     const Center(child: Text('Job Screen')),
     const AccountScreen(),
   ];

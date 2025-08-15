@@ -3,6 +3,8 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:quiz_app/cores/bindings/general_binding.dart';
 import 'package:quiz_app/cores/utils/theme/theme.dart';
+import 'package:quiz_app/features/home/accounts/screens/change_password_screen.dart';
+import 'package:quiz_app/features/home/fav/screens/favorite_screen.dart';
 import 'package:quiz_app/features/home/notification/screens/notification_screen.dart';
 import 'package:quiz_app/locale/locale.dart';
 import 'package:quiz_app/routes/app_pages.dart';
@@ -22,7 +24,7 @@ class App extends StatelessWidget {
       initialBinding: GeneralBinding(),
       // initialRoute: AppRoutes.home,
       // getPages: appPages,
-      home: NotificationScreen(),
+      home: ChangePasswordScreen(),
       translations: Localization(),
       locale: const Locale('km', 'KH'),
       fallbackLocale: const Locale('en', 'US'),

@@ -67,7 +67,7 @@ class AccountScreen extends StatelessWidget {
               MenuItem(
                 icon: Iconsax.lock,
                 title: 'Change Password',
-                onTap: () {},
+                onTap: () => Get.toNamed(AppRoutes.changePassword),
               ),
               MenuItem(
                 icon: Iconsax.shopping_bag,

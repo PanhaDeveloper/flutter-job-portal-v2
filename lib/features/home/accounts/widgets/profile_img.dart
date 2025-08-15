@@ -3,10 +3,7 @@ import 'package:get/get.dart';
 import 'package:quiz_app/features/home/accounts/controller/personal_profile_controller.dart';
 
 class ProfileImg extends StatelessWidget {
-  const ProfileImg({
-    super.key,
-    required this.controller,
-  });
+  const ProfileImg({super.key, required this.controller});
 
   final PersonalProfileController controller;
 
@@ -16,7 +13,7 @@ class ProfileImg extends StatelessWidget {
       onTap: controller.showImagePickerOptions,
       child: Obx(() {
         final image = controller.profileImage.value;
-    
+
         return Container(
           width: 120,
           height: 120,
@@ -41,11 +38,7 @@ class ProfileImg extends StatelessWidget {
                   : Stack(
                     alignment: Alignment.center,
                     children: [
-                      const Icon(
-                        Icons.person,
-                        size: 60,
-                        color: Colors.grey,
-                      ),
+                      const Icon(Icons.person, size: 60, color: Colors.grey),
                       Positioned(
                         bottom: 0,
                         right: 0,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:quiz_app/cores/utils/constants/colors.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
@@ -21,7 +22,7 @@ class TextFormFieldWidget extends StatelessWidget {
     this.validator,
     this.isObscure = false,
     this.onTap,
-    this.passwordToggleIcon,
+    this.passwordToggleIcon = Iconsax.eye_slash,
     this.prefixIcon,
     this.maxLines = 1,
     this.keyboardType = TextInputType.text,
