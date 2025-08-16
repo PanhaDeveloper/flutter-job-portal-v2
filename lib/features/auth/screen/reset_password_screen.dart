@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:quiz_app/cores/shared/button_widget.dart';
-import 'package:quiz_app/cores/shared/form_field_widget.dart';
-import 'package:quiz_app/cores/shared/text_form_field.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/cores/utils/validators/validation.dart';
-import 'package:quiz_app/features/auth/controllers/auth_controller.dart';
-import 'package:quiz_app/features/auth/widgets/auth_panel_widget.dart';
+import 'package:job_app/cores/shared/button_widget.dart';
+import 'package:job_app/cores/shared/form_field_widget.dart';
+import 'package:job_app/cores/shared/text_form_field.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/validators/validation.dart';
+import 'package:job_app/features/auth/controllers/auth_controller.dart';
+import 'package:job_app/features/auth/widgets/auth_panel_widget.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});

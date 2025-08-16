@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "package:quiz_app/cores/shared/app_bar_widget.dart";
-import "package:quiz_app/features/home/notification/widget/notification_card.dart";
+import "package:job_app/cores/shared/app_bar_widget.dart";
+import "package:job_app/features/home/notification/widget/notification_card.dart";
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});

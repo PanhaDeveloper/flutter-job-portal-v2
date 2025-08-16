@@ -1,5 +1,5 @@
 // import 'package:flutter/material.dart';
-// import 'package:quiz_app/features/onboarding/controller/onboarding_controller.dart';
+// import 'package:job_app/features/onboarding/controller/onboarding_controller.dart';
 
 // class BuildDotWidget extends StatelessWidget {
 //   final int index;

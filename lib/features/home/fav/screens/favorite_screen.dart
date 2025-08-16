@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/shared/app_bar_widget.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/features/home/widgets/search_box.dart';
+import 'package:job_app/cores/shared/app_bar_widget.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/features/home/widgets/search_box.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
@@ -19,7 +19,8 @@ class FavoriteScreen extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                 itemCount: 8,
-                separatorBuilder: (context, index) => const SizedBox(height: 10),
+                separatorBuilder:
+                    (context, index) => const SizedBox(height: 10),
                 itemBuilder: (context, index) => const JobListTile(),
               ),
             ),
@@ -31,9 +32,7 @@ class FavoriteScreen extends StatelessWidget {
 }
 
 class JobListTile extends StatelessWidget {
-  const JobListTile({
-    super.key,
-  });
+  const JobListTile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +56,7 @@ class JobListTile extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Gojek',
-              style: TextStyle(color: AppColors.textSecondary),
-            ),
+            Text('Gojek', style: TextStyle(color: AppColors.textSecondary)),
             Text('Software Engineer'),
           ],
         ),

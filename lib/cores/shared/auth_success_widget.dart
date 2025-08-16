@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quiz_app/cores/shared/button_widget.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/cores/utils/constants/image_strings.dart';
+import 'package:job_app/cores/shared/button_widget.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
 
 class AuthSuccessWidget extends StatelessWidget {
   final String title;

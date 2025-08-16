@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:quiz_app/routes/app_routes.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class SplashController extends GetxController {
   static SplashController get instance => Get.find();

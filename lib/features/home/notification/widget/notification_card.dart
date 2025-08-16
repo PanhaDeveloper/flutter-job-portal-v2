@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
 
 class NotificationCard extends StatelessWidget {
   final IconData icon;
@@ -21,7 +21,8 @@ class NotificationCard extends StatelessWidget {
     this.isBorderBottom = false,
     this.cardColor = const Color.fromARGB(146, 216, 229, 248),
     this.timeColor = AppColors.boldPrimary,
-    this.borderColor = const Color.fromARGB(255, 227, 232, 240), this.onTap,
+    this.borderColor = const Color.fromARGB(255, 227, 232, 240),
+    this.onTap,
   });
 
   @override

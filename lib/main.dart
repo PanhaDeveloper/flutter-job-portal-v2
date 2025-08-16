@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:quiz_app/app.dart';
+import 'package:job_app/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

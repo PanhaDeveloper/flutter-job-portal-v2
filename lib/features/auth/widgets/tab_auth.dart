@@ -5,6 +5,7 @@ class TabAuth extends StatelessWidget {
   final Color color, textColor;
   final VoidCallback onPressed;
   final BorderRadius borderRadius;
+  final BoxDecoration? decoration;
 
   const TabAuth({
     super.key,
@@ -13,6 +14,7 @@ class TabAuth extends StatelessWidget {
     this.textColor = Colors.white,
     required this.onPressed,
     required this.borderRadius,
+    this.decoration,
   });
 
   @override
@@ -28,6 +30,7 @@ class TabAuth extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 10),
             alignment: Alignment.center,
+            decoration: decoration,
             child: Text(
               text,
               style: TextStyle(color: textColor, fontWeight: FontWeight.bold),

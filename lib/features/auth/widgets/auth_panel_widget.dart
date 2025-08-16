@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
 
 class AuthPanelWidget extends StatelessWidget {
   final Widget? widget;
@@ -13,7 +13,7 @@ class AuthPanelWidget extends StatelessWidget {
     this.isContainer = true,
     this.widget,
     this.sizeBox,
-    this.paddingTop = 50,
+    this.paddingTop = 25,
   });
 
   @override
@@ -22,12 +22,12 @@ class AuthPanelWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 25, top: paddingTop, bottom: 50),
+          padding: EdgeInsets.only(left: 25, top: paddingTop, bottom: 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Khmer Job",
+                "Khmer Career",
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,

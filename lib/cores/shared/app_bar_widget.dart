@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/cores/shared/app_bar_icon.dart';
-import 'package:quiz_app/cores/utils/device/device_utility.dart';
+import 'package:job_app/cores/shared/app_bar_icon.dart';
+import 'package:job_app/cores/utils/device/device_utility.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool isLeading;
@@ -18,9 +18,10 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      leading: isLeading
-          ? GestureDetector(onTap: () => Get.back(), child: AppBarIcon())
-          : null,
+      leading:
+          isLeading
+              ? GestureDetector(onTap: () => Get.back(), child: AppBarIcon())
+              : null,
       title: Text(
         title,
         style: const TextStyle(

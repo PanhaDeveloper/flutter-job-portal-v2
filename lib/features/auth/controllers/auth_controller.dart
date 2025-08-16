@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/cores/utils/helpers/network_manager.dart';
-import 'package:quiz_app/cores/utils/popups/loaders.dart';
+import 'package:job_app/cores/utils/helpers/network_manager.dart';
+import 'package:job_app/cores/utils/popups/loaders.dart';
 
 enum AuthTab { login, register }
 
@@ -66,7 +66,6 @@ class AuthController extends GetxController {
         title: "Success",
         message: "Registration successful!",
       );
-
     } catch (e) {
       Loaders.errorSnackBar(title: "Error", message: e.toString());
     }
@@ -82,8 +81,6 @@ class AuthController extends GetxController {
       );
       return;
     }
-
-  
   }
 
   Future<void> resetPassword() async {
@@ -107,7 +104,6 @@ class AuthController extends GetxController {
         title: "Success",
         message: "Password reset successful!",
       );
-
     } catch (e) {
       Loaders.errorSnackBar(title: "Error", message: e.toString());
     }

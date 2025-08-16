@@ -1,19 +1,22 @@
 import 'package:get/get.dart';
-import 'package:quiz_app/features/auth/bindings/auth_binding.dart';
-import 'package:quiz_app/features/auth/screen/auth_screen.dart';
-import 'package:quiz_app/features/auth/screen/auth_success_screen.dart';
-import 'package:quiz_app/features/auth/screen/forgot_password_screen.dart';
-import 'package:quiz_app/features/auth/screen/otp_screen.dart';
-import 'package:quiz_app/features/auth/screen/reset_password_screen.dart';
-import 'package:quiz_app/features/home/accounts/screens/change_password_screen.dart';
-import 'package:quiz_app/features/home/accounts/screens/personal_profile_screen.dart';
-import 'package:quiz_app/features/home/notification/screens/notification_screen.dart';
-import 'package:quiz_app/features/onboarding/binding/onboarding_binding.dart';
-import 'package:quiz_app/features/splash/binding/splash_binding.dart';
-import 'package:quiz_app/features/splash/screen/splash_screen.dart';
-import 'package:quiz_app/features/onboarding/screen/boarding_screen.dart';
-import 'package:quiz_app/navigate.dart';
-import 'package:quiz_app/routes/app_routes.dart';
+import 'package:job_app/features/auth/bindings/auth_binding.dart';
+import 'package:job_app/features/auth/screen/auth_screen.dart';
+import 'package:job_app/features/auth/screen/auth_success_screen.dart';
+import 'package:job_app/features/auth/screen/forgot_password_screen.dart';
+import 'package:job_app/features/auth/screen/otp_screen.dart';
+import 'package:job_app/features/auth/screen/reset_password_screen.dart';
+import 'package:job_app/features/home/accounts/screens/change_password_screen.dart';
+import 'package:job_app/features/home/accounts/screens/personal_profile_screen.dart';
+import 'package:job_app/features/home/fav/screens/favorite_screen.dart';
+import 'package:job_app/features/home/jobdetail/binding/job_detail_binding.dart';
+import 'package:job_app/features/home/jobdetail/screens/job_detail_screen.dart';
+import 'package:job_app/features/home/notification/screens/notification_screen.dart';
+import 'package:job_app/features/onboarding/binding/onboarding_binding.dart';
+import 'package:job_app/features/splash/binding/splash_binding.dart';
+import 'package:job_app/features/splash/screen/splash_screen.dart';
+import 'package:job_app/features/onboarding/screen/boarding_screen.dart';
+import 'package:job_app/navigate.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 final appPages = [
   GetPage(
@@ -55,4 +58,12 @@ final appPages = [
   GetPage(name: AppRoutes.notification, page: () => NotificationScreen()),
 
   GetPage(name: AppRoutes.changePassword, page: () => ChangePasswordScreen()),
+
+  GetPage(name: AppRoutes.favoriteJobs, page: () => FavoriteScreen()),
+
+  GetPage(
+    name: AppRoutes.jobDetail,
+    page: () => JobDetailScreen(),
+    binding: JobDetailBinding(),
+  ),
 ];

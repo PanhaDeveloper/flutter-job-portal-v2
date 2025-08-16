@@ -10,4 +10,7 @@ class AppRoutes {
   static const String personalProfile = '/personal-profile';
   static const String notification = '/notification';
   static const String changePassword = '/change-password';
+  static const String favoriteJobs = '/favorite-jobs';
+  static const String jobDetail = '/job-detail';
+  static const String jobApply = '/job-apply';
 }

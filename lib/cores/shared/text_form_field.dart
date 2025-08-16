@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
   final TextEditingController? controller;

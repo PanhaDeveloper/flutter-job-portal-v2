@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/utils/constants/sizes.dart';
+import 'package:job_app/cores/utils/constants/sizes.dart';
 import '../../constants/colors.dart';
 
 class CustomAppBarThemes {

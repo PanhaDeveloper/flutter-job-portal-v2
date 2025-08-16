@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/cores/utils/constants/sizes.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/sizes.dart';
 
 class FormFieldWidget extends StatelessWidget {
   final String textTitle;
@@ -11,7 +11,7 @@ class FormFieldWidget extends StatelessWidget {
   const FormFieldWidget({
     super.key,
     required this.textTitle,
-    this.horizontalPadding = 15,
+    this.horizontalPadding = 0,
     this.titleColor = AppColors.black,
     this.formField,
   });
@@ -34,7 +34,7 @@ class FormFieldWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        formField!
+        formField!,
       ],
     );
   }

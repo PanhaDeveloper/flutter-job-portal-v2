@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/cores/utils/constants/image_strings.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
 
 class HomeController extends GetxController {
   static HomeController get instance => Get.find();

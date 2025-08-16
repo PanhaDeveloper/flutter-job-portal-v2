@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/shared/app_bar_widget.dart';
-import 'package:quiz_app/cores/shared/button_widget.dart';
-import 'package:quiz_app/cores/shared/form_field_widget.dart';
-import 'package:quiz_app/cores/shared/text_form_field.dart';
-import 'package:quiz_app/cores/utils/validators/validation.dart';
+import 'package:job_app/cores/shared/app_bar_widget.dart';
+import 'package:job_app/cores/shared/button_widget.dart';
+import 'package:job_app/cores/shared/form_field_widget.dart';
+import 'package:job_app/cores/shared/text_form_field.dart';
+import 'package:job_app/cores/utils/validators/validation.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   const ChangePasswordScreen({super.key});
@@ -29,8 +29,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       hintText: 'Enter your current password',
                       isPassword: true,
                       isObscure: true,
-                      validator:
-                          (value) => Validator.validatePassword(value),
+                      validator: (value) => Validator.validatePassword(value),
                     ),
                   ),
 
@@ -42,8 +41,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       hintText: 'Enter your new password',
                       isPassword: true,
                       isObscure: true,
-                      validator:
-                          (value) => Validator.validatePassword(value),
+                      validator: (value) => Validator.validatePassword(value),
                     ),
                   ),
 
@@ -55,8 +53,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       isObscure: true,
                       isPassword: true,
                       hintText: 'Re-enter your new password',
-                      validator:
-                          (value) => Validator.validatePassword(value),
+                      validator: (value) => Validator.validatePassword(value),
                     ),
                   ),
                   const SizedBox(height: 30),

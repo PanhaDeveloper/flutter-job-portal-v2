@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/shared/circle_widget.dart';
-import 'package:quiz_app/cores/utils/constants/image_strings.dart';
+import 'package:job_app/cores/shared/circle_widget.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

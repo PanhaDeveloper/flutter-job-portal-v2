@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
 
 class ButtonWidget extends StatelessWidget {
   final double width, height;
@@ -19,7 +19,8 @@ class ButtonWidget extends StatelessWidget {
     this.btnTextColor = Colors.white,
     this.height = 45,
     this.borderRadius = 25,
-    this.isIcon = false, this.icon,
+    this.isIcon = false,
+    this.icon,
   });
 
   @override

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/cores/data/data.dart';
-import 'package:quiz_app/cores/shared/build_dot_widget.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/features/onboarding/controller/onboarding_controller.dart';
-import 'package:quiz_app/features/onboarding/widgets/onboarding_widget.dart';
+import 'package:job_app/cores/data/data.dart';
+import 'package:job_app/cores/shared/build_dot_widget.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/features/onboarding/controller/onboarding_controller.dart';
+import 'package:job_app/features/onboarding/widgets/onboarding_widget.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -23,7 +23,7 @@ class OnBoardingScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                  onPressed: () => controller.skipOnBoarding() ,
+                  onPressed: () => controller.skipOnBoarding(),
                   child: Obx(
                     () => Text(
                       controller.skipText.value,

@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:iconsax/iconsax.dart";
-import "package:quiz_app/cores/utils/constants/colors.dart";
-import "package:quiz_app/cores/utils/constants/image_strings.dart";
+import "package:job_app/cores/utils/constants/colors.dart";
+import "package:job_app/cores/utils/constants/image_strings.dart";
+import "package:job_app/routes/app_routes.dart";
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});
@@ -56,7 +58,7 @@ class HeaderWidget extends StatelessWidget {
                 size: 28,
                 color: Colors.black54,
               ),
-              onTap: () {},
+              onTap: () => Get.toNamed(AppRoutes.notification),
             ),
             Positioned(
               right: 3,

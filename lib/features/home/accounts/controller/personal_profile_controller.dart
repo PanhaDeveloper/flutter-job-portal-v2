@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:quiz_app/cores/shared/image_source_button.dart';
-import 'package:quiz_app/cores/utils/helpers/network_manager.dart';
-import 'package:quiz_app/cores/utils/popups/alert_dialog.dart';
-import 'package:quiz_app/cores/utils/popups/loaders.dart';
+import 'package:job_app/cores/shared/image_source_button.dart';
+import 'package:job_app/cores/utils/helpers/network_manager.dart';
+import 'package:job_app/cores/utils/popups/alert_dialog.dart';
+import 'package:job_app/cores/utils/popups/loaders.dart';
 
 class PersonalProfileController extends GetxController {
   static PersonalProfileController get instance => Get.find();
@@ -22,11 +22,11 @@ class PersonalProfileController extends GetxController {
   void showImagePickerOptions() {
     Get.bottomSheet(
       backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
       Container(
         padding: const EdgeInsets.all(20),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

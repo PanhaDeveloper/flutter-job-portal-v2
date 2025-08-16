@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:quiz_app/features/splash/controller/splash_controller.dart';
+import 'package:job_app/features/splash/controller/splash_controller.dart';
 
 class SplashBinding extends Bindings {
   @override

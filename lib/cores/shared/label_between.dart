@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
 
 class LabelBetween extends StatelessWidget {
   final String title;
   final String buttonText;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const LabelBetween({
     super.key,
     required this.title,
     required this.buttonText,
-    required this.onPressed,
+    this.onPressed,
   });
 
   @override

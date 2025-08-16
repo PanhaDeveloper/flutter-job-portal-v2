@@ -1,16 +1,16 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:iconsax/iconsax.dart";
-import "package:quiz_app/cores/shared/label_between.dart";
-import "package:quiz_app/cores/utils/constants/colors.dart";
-import "package:quiz_app/cores/utils/constants/image_strings.dart";
-import "package:quiz_app/cores/utils/constants/sizes.dart";
-import "package:quiz_app/features/home/controller/home_controller.dart";
-import "package:quiz_app/features/home/widgets/card_slider.dart";
-import "package:quiz_app/features/home/widgets/header.dart";
-import "package:quiz_app/features/home/widgets/job_card.dart";
-import "package:quiz_app/features/home/widgets/job_category_title.dart";
-import "package:quiz_app/features/home/widgets/search_box.dart";
+import "package:job_app/cores/shared/label_between.dart";
+import "package:job_app/cores/utils/constants/colors.dart";
+import "package:job_app/cores/utils/constants/image_strings.dart";
+import "package:job_app/cores/utils/constants/sizes.dart";
+import "package:job_app/features/home/controller/home_controller.dart";
+import "package:job_app/features/home/widgets/card_slider.dart";
+import "package:job_app/features/home/widgets/header.dart";
+import "package:job_app/features/home/widgets/job_card.dart";
+import "package:job_app/features/home/widgets/job_category_title.dart";
+import "package:job_app/features/home/widgets/search_box.dart";
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/cores/shared/app_bar_widget.dart';
-import 'package:quiz_app/cores/shared/button_widget.dart';
-import 'package:quiz_app/cores/shared/form_field_widget.dart';
-import 'package:quiz_app/cores/shared/text_form_field.dart';
-import 'package:quiz_app/cores/utils/validators/validation.dart';
-import 'package:quiz_app/features/home/accounts/controller/personal_profile_controller.dart';
-import 'package:quiz_app/features/home/accounts/widgets/profile_img.dart';
+import 'package:job_app/cores/shared/app_bar_widget.dart';
+import 'package:job_app/cores/shared/button_widget.dart';
+import 'package:job_app/cores/shared/form_field_widget.dart';
+import 'package:job_app/cores/shared/text_form_field.dart';
+import 'package:job_app/cores/utils/validators/validation.dart';
+import 'package:job_app/features/home/accounts/controller/personal_profile_controller.dart';
+import 'package:job_app/features/home/accounts/widgets/profile_img.dart';
 
 class PersonalProfileScreen extends StatelessWidget {
   const PersonalProfileScreen({super.key});
@@ -18,17 +18,13 @@ class PersonalProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBarWidget(title: 'Personal Profile'),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Form(
           key: controller.formKey,
           child: Column(
             children: [
-              const SizedBox(height: 20),
-
               // Profile Image
               ProfileImg(controller: controller),
-              const SizedBox(height: 30),
-
               // Username Field
               FormFieldWidget(
                 titleColor: Colors.black87,
@@ -102,7 +98,7 @@ class PersonalProfileScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
 
               // Save Button
               ButtonWidget(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/shared/custom_text_field.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/cores/utils/constants/image_strings.dart';
+import 'package:job_app/cores/shared/custom_text_field.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
 
 class SearchBox extends StatelessWidget {
   const SearchBox({super.key});

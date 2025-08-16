@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:quiz_app/cores/shared/button_widget.dart';
-import 'package:quiz_app/cores/shared/form_field_widget.dart';
-import 'package:quiz_app/cores/shared/social_icon.dart';
-import 'package:quiz_app/cores/shared/text_form_field.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/cores/utils/constants/image_strings.dart';
-import 'package:quiz_app/cores/utils/constants/sizes.dart';
-import 'package:quiz_app/cores/utils/validators/validation.dart';
-import 'package:quiz_app/features/auth/controllers/auth_controller.dart';
-import 'package:quiz_app/routes/app_routes.dart';
+import 'package:job_app/cores/shared/button_widget.dart';
+import 'package:job_app/cores/shared/form_field_widget.dart';
+import 'package:job_app/cores/shared/social_icon.dart';
+import 'package:job_app/cores/shared/text_form_field.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
+import 'package:job_app/cores/utils/constants/sizes.dart';
+import 'package:job_app/cores/utils/validators/validation.dart';
+import 'package:job_app/features/auth/controllers/auth_controller.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({super.key});

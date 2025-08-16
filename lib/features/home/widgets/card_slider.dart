@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/cores/shared/build_dot_widget.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/features/home/controller/home_controller.dart';
+import 'package:job_app/cores/shared/build_dot_widget.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/features/home/controller/home_controller.dart';
 
 class CardData {
   final String title;

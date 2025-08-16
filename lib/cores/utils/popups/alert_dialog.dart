@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quiz_app/cores/utils/constants/image_strings.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
 
 enum SweetAlertType { success, warning, error }
 
@@ -29,10 +29,10 @@ class SweetAlert {
           fit: StackFit.expand,
           children: [
             // Blur overlay
-            BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-              child: Container(color: Colors.black.withOpacity(0.4)),
-            ),
+            // BackdropFilter(
+            //   filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+            //   child: Container(color: Colors.black.withOpacity(0.4)),
+            // ),
             // Pop-up box
             Center(
               child: TweenAnimationBuilder<double>(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:quiz_app/cores/shared/button_widget.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/features/auth/widgets/auth_panel_widget.dart';
+import 'package:job_app/cores/shared/button_widget.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/features/auth/widgets/auth_panel_widget.dart';
+
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
 
@@ -52,9 +53,7 @@ class OtpScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ButtonWidget(
               width: double.infinity,
-              onPressed: () {
-             
-              },
+              onPressed: () {},
               btnTitle: "Confirm OTP",
             ),
           ],

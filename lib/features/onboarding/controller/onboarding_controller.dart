@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/routes/app_routes.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class OnboardingController extends GetxController {
   static OnboardingController get instance => Get.find();

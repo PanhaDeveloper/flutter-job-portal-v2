@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/features/home/accounts/controller/personal_profile_controller.dart';
+import 'package:job_app/features/home/accounts/controller/personal_profile_controller.dart';
 
 class ProfileImg extends StatelessWidget {
   const ProfileImg({super.key, required this.controller});
@@ -15,8 +15,8 @@ class ProfileImg extends StatelessWidget {
         final image = controller.profileImage.value;
 
         return Container(
-          width: 120,
-          height: 120,
+          width: 100,
+          height: 100,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.grey.shade300,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/cores/utils/helpers/helper_functions.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/helpers/helper_functions.dart';
 
 class OnboardingWidget extends StatelessWidget {
   final String image, title, description;

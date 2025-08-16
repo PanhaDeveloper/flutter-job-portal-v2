@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/cores/shared/button_widget.dart';
-import 'package:quiz_app/cores/shared/form_field_widget.dart';
-import 'package:quiz_app/cores/shared/text_form_field.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/cores/utils/constants/sizes.dart';
-import 'package:quiz_app/cores/utils/validators/validation.dart';
-import 'package:quiz_app/features/auth/controllers/auth_controller.dart';
-import 'package:quiz_app/features/auth/widgets/auth_panel_widget.dart';
+import 'package:job_app/cores/shared/button_widget.dart';
+import 'package:job_app/cores/shared/form_field_widget.dart';
+import 'package:job_app/cores/shared/text_form_field.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/sizes.dart';
+import 'package:job_app/cores/utils/validators/validation.dart';
+import 'package:job_app/features/auth/controllers/auth_controller.dart';
+import 'package:job_app/features/auth/widgets/auth_panel_widget.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});

@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-import 'package:quiz_app/cores/utils/helpers/network_manager.dart';
-
+import 'package:job_app/cores/utils/helpers/network_manager.dart';
 
 class GeneralBinding extends Bindings {
   @override

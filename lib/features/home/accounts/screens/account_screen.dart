@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:quiz_app/cores/shared/button_widget.dart';
-import 'package:quiz_app/features/home/accounts/controller/personal_profile_controller.dart';
-import 'package:quiz_app/features/home/accounts/widgets/menu_item.dart';
-import 'package:quiz_app/features/home/accounts/widgets/profile_info.dart';
-import 'package:quiz_app/features/home/accounts/widgets/stat_column.dart';
-import 'package:quiz_app/routes/app_routes.dart';
+import 'package:job_app/cores/shared/button_widget.dart';
+import 'package:job_app/features/home/accounts/controller/personal_profile_controller.dart';
+import 'package:job_app/features/home/accounts/widgets/menu_item.dart';
+import 'package:job_app/features/home/accounts/widgets/profile_info.dart';
+import 'package:job_app/features/home/accounts/widgets/stat_column.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -72,11 +72,6 @@ class AccountScreen extends StatelessWidget {
               MenuItem(
                 icon: Iconsax.shopping_bag,
                 title: 'Job Applied',
-                onTap: () {},
-              ),
-              MenuItem(
-                icon: Iconsax.heart,
-                title: 'Favorite Job',
                 onTap: () {},
               ),
               MenuItem(

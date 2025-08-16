@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
-import 'package:quiz_app/features/auth/widgets/auth_panel_widget.dart';
-import 'package:quiz_app/features/auth/widgets/login_widget.dart';
-import 'package:quiz_app/features/auth/widgets/register_widget.dart';
-import 'package:quiz_app/features/auth/widgets/tab_auth.dart';
-import 'package:quiz_app/features/auth/controllers/auth_controller.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/features/auth/widgets/auth_panel_widget.dart';
+import 'package:job_app/features/auth/widgets/login_widget.dart';
+import 'package:job_app/features/auth/widgets/register_widget.dart';
+import 'package:job_app/features/auth/widgets/tab_auth.dart';
+import 'package:job_app/features/auth/controllers/auth_controller.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});

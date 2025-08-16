@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/shared/auth_success_widget.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/shared/auth_success_widget.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
 
 class AuthSuccessScreen extends StatelessWidget {
   const AuthSuccessScreen({super.key});

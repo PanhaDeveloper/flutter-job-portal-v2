@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
 
 class CustomNavigate extends StatelessWidget {
   final IconData iconPath;
@@ -33,10 +33,7 @@ class CustomNavigate extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(
-              iconPath,
-              color: isSelected ? Colors.white : Colors.grey,
-            ),
+            Icon(iconPath, color: isSelected ? Colors.white : Colors.grey),
             if (isSelected) ...[
               SizedBox(width: 8),
               Text(

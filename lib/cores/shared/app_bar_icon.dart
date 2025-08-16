@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+
 class AppBarIcon extends StatelessWidget {
   final IconData icon;
-  const AppBarIcon({
-    super.key,
-    this.icon = Icons.arrow_back,
-  });
+  const AppBarIcon({super.key, this.icon = Icons.arrow_back});
 
   @override
   Widget build(BuildContext context) {
