@@ -171,7 +171,7 @@ class JobDetailScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.boldPrimary,
                 ),
-                child: const Text('Save Job'),
+                child: const Text('Apply Now', style: TextStyle(fontSize: 16)),
               ),
             ),
           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/helpers/app_resposive.dart';
 
 class LabelBetween extends StatelessWidget {
   final String title;
@@ -15,6 +16,22 @@ class LabelBetween extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final responsive = AppResponsive(context);
+
+    double titleFontSize =
+        responsive.isSmallDevice
+            ? 14
+            : responsive.isMediumDevice
+            ? 16
+            : 18;
+
+    double buttonFontSize =
+        responsive.isSmallDevice
+            ? 12
+            : responsive.isMediumDevice
+            ? 14
+            : 16;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -22,7 +39,7 @@ class LabelBetween extends StatelessWidget {
           title,
           style: TextStyle(
             color: Colors.black,
-            fontSize: 18,
+            fontSize: titleFontSize,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -33,6 +50,7 @@ class LabelBetween extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w400,
               color: AppColors.buttonPrimary,
+              fontSize: buttonFontSize,
             ),
           ),
         ),

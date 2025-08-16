@@ -34,4 +34,8 @@ class Images {
   // --- Job Card Images ---
   static const String cardLogo1 = "assets/companies/card_logo_1.png";
   static const String goJek = "assets/companies/gojek.png";
+
+  // ---- Flag Images ---
+  static const String usFlag = "assets/general/en.png";
+  static const String khFlag = "assets/general/kh.png";
 }

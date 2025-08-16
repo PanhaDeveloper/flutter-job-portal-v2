@@ -5,6 +5,8 @@ import 'package:job_app/cores/shared/label_between.dart';
 import 'package:job_app/cores/utils/constants/colors.dart';
 import 'package:job_app/features/auth/widgets/tab_auth.dart';
 import 'package:job_app/features/home/search_result/controller/search_controller.dart';
+import 'package:job_app/features/home/search_result/widgets/popular.dart';
+import 'package:job_app/features/home/search_result/widgets/recently.dart';
 
 class SearchResultScreen extends StatelessWidget {
   const SearchResultScreen({super.key});
@@ -66,6 +68,13 @@ class SearchResultScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 20),
+              Obx(
+                () =>
+                    controller.selectedIndex.value == 0
+                        ? const RecentlyWidget()
+                        : const PopularWidget(),
               ),
             ],
           ),

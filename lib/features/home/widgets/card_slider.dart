@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:job_app/cores/shared/build_dot_widget.dart';
 import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/helpers/app_resposive.dart';
 import 'package:job_app/features/home/controller/home_controller.dart';
 
 class CardData {
@@ -31,7 +32,7 @@ class CardSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final responsive = AppResponsive(context);
 
     return Column(
       children: [
@@ -39,7 +40,7 @@ class CardSlider extends StatelessWidget {
           carouselController: controller.carouselController,
           itemCount: cardDataList.length,
           options: CarouselOptions(
-            height: 200,
+            height: responsive.cardHeight(),
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 3),
             enlargeCenterPage: true,
@@ -50,12 +51,17 @@ class CardSlider extends StatelessWidget {
           itemBuilder: (context, index, realIndex) {
             final data = cardDataList[index];
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+              padding: EdgeInsets.symmetric(
+                vertical: responsive.isSmallDevice ? 10 : 20,
+                horizontal: responsive.isSmallDevice ? 5 : 10,
+              ),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: AppColors.buttonPrimary,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(
+                    responsive.isSmallDevice ? 12 : 20,
+                  ),
                   image: DecorationImage(
                     image: AssetImage(data.backgroundImage),
                     fit: BoxFit.cover,
@@ -67,7 +73,9 @@ class CardSlider extends StatelessWidget {
                     Flexible(
                       flex: 2,
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 20),
+                        padding: EdgeInsets.only(
+                          left: responsive.isSmallDevice ? 10 : 20,
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -76,11 +84,11 @@ class CardSlider extends StatelessWidget {
                               data.title,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: size.width < 321 ? 20.0 : 25.0,
+                                fontSize: responsive.titleFontSize(),
                                 color: Colors.white,
                               ),
                             ),
-                            const SizedBox(height: 15),
+                            SizedBox(height: responsive.isSmallDevice ? 8 : 15),
                             InkWell(
                               onTap: data.onTap,
                               borderRadius: BorderRadius.circular(10),
@@ -90,8 +98,10 @@ class CardSlider extends StatelessWidget {
                                   Flexible(
                                     child: Container(
                                       padding: EdgeInsets.symmetric(
-                                        horizontal: size.width < 321 ? 1 : 10,
-                                        vertical: size.width < 321 ? 2 : 5,
+                                        horizontal:
+                                            responsive.isSmallDevice ? 4 : 10,
+                                        vertical:
+                                            responsive.isSmallDevice ? 2 : 6,
                                       ),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
@@ -99,7 +109,8 @@ class CardSlider extends StatelessWidget {
                                       ),
                                       child: Text(
                                         data.jobText,
-                                        style: const TextStyle(
+                                        style: TextStyle(
+                                          fontSize: responsive.jobFontSize(),
                                           color: Colors.white,
                                         ),
                                         overflow: TextOverflow.ellipsis,
@@ -107,11 +118,11 @@ class CardSlider extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(width: 10),
+                                  const SizedBox(width: 8),
                                   Icon(
                                     data.arrowIcon,
                                     color: Colors.white,
-                                    size: 20,
+                                    size: responsive.isSmallDevice ? 16 : 20,
                                   ),
                                 ],
                               ),
@@ -120,13 +131,21 @@ class CardSlider extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Image.asset(data.mainImage, fit: BoxFit.cover),
+                    Flexible(
+                      flex: 1,
+                      child: Image.asset(
+                        data.mainImage,
+                        height: responsive.cardHeight() * 0.8,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ],
                 ),
               ),
             );
           },
         ),
+        const SizedBox(height: 10),
         Obx(
           () => Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -7,6 +7,7 @@ import 'package:job_app/features/home/accounts/screens/personal_profile_screen.d
 import 'package:job_app/features/home/jobdetail/screens/job_detail_screen.dart';
 import 'package:job_app/features/home/search_result/screens/search_result_screen.dart';
 import 'package:job_app/locale/locale.dart';
+import 'package:job_app/navigate.dart';
 import 'package:job_app/routes/app_pages.dart';
 import 'package:job_app/routes/app_routes.dart';
 
@@ -22,10 +23,10 @@ class App extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      initialBinding: GeneralBinding(),
+      // initialBinding: GeneralBinding(),
       // initialRoute: AppRoutes.splash,
-      // getPages: appPages,
-      home: SearchResultScreen(),
+      getPages: appPages,
+      home: AppNavigateBar(),
       translations: Localization(),
       locale: const Locale('km', 'KH'),
       fallbackLocale: const Locale('en', 'US'),

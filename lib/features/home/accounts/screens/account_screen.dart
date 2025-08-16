@@ -6,6 +6,7 @@ import 'package:job_app/features/home/accounts/controller/personal_profile_contr
 import 'package:job_app/features/home/accounts/widgets/menu_item.dart';
 import 'package:job_app/features/home/accounts/widgets/profile_info.dart';
 import 'package:job_app/features/home/accounts/widgets/stat_column.dart';
+import 'package:job_app/navigate.dart';
 import 'package:job_app/routes/app_routes.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -72,7 +73,7 @@ class AccountScreen extends StatelessWidget {
               MenuItem(
                 icon: Iconsax.shopping_bag,
                 title: 'Job Applied',
-                onTap: () {},
+                onTap: () => AppNavigateController.instance.currentIndex(2),
               ),
               MenuItem(
                 icon: Iconsax.setting_2,

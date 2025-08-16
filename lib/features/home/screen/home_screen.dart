@@ -1,16 +1,17 @@
-import "package:flutter/material.dart";
-import "package:get/get.dart";
-import "package:iconsax/iconsax.dart";
-import "package:job_app/cores/shared/label_between.dart";
-import "package:job_app/cores/utils/constants/colors.dart";
-import "package:job_app/cores/utils/constants/image_strings.dart";
-import "package:job_app/cores/utils/constants/sizes.dart";
-import "package:job_app/features/home/controller/home_controller.dart";
-import "package:job_app/features/home/widgets/card_slider.dart";
-import "package:job_app/features/home/widgets/header.dart";
-import "package:job_app/features/home/widgets/job_card.dart";
-import "package:job_app/features/home/widgets/job_category_title.dart";
-import "package:job_app/features/home/widgets/search_box.dart";
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:job_app/cores/shared/label_between.dart';
+import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
+import 'package:job_app/cores/utils/helpers/app_resposive.dart';
+import 'package:job_app/features/home/controller/home_controller.dart';
+import 'package:job_app/features/home/widgets/card_slider.dart';
+import 'package:job_app/features/home/widgets/header.dart';
+import 'package:job_app/features/home/widgets/job_card.dart';
+import 'package:job_app/features/home/widgets/job_category_title.dart';
+import 'package:job_app/features/home/widgets/search_box.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,30 +19,33 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
+    final responsive = AppResponsive(context);
 
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            padding: EdgeInsets.symmetric(
+              vertical: responsive.defaultPadding(),
+              horizontal: responsive.defaultPadding(),
+            ),
             child: Column(
               children: [
                 // Header
                 HeaderWidget(),
-                const SizedBox(height: 20),
+                SizedBox(height: responsive.defaultPadding()),
 
                 // Search Box
                 SearchBox(),
-                const SizedBox(height: 20),
+                SizedBox(height: responsive.defaultPadding()),
 
-                // Label Between
+                // Label Between - Popular Jobs
                 LabelBetween(
                   title: "Popular Jobs",
                   buttonText: "See More",
                   onPressed: () {},
                 ),
-
-                // slider
+                // Slider
                 CardSlider(
                   cardDataList: [
                     CardData(
@@ -50,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                       backgroundImage: Images.vectorImage,
                       mainImage: Images.cameraIcon,
                       arrowIcon: Iconsax.arrow_right_2,
-                      onTap: () {},
+                      onTap: () => Get.toNamed(AppRoutes.jobDetail),
                     ),
                     CardData(
                       title: "Creative \nVideo Editor",
@@ -58,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                       backgroundImage: Images.vectorImage,
                       mainImage: Images.cameraIcon,
                       arrowIcon: Iconsax.arrow_right_2,
-                      onTap: () {},
+                      onTap: () => Get.toNamed(AppRoutes.jobDetail),
                     ),
                     CardData(
                       title: "Creative \nVideo Editor",
@@ -66,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                       backgroundImage: Images.vectorImage,
                       mainImage: Images.cameraIcon,
                       arrowIcon: Iconsax.arrow_right_2,
-                      onTap: () {},
+                      onTap: () => Get.toNamed(AppRoutes.jobDetail),
                     ),
                     CardData(
                       title: "Creative \nVideo Editor",
@@ -74,22 +78,22 @@ class HomeScreen extends StatelessWidget {
                       backgroundImage: Images.vectorImage,
                       mainImage: Images.cameraIcon,
                       arrowIcon: Iconsax.arrow_right_2,
-                      onTap: () {},
+                      onTap: () => Get.toNamed(AppRoutes.jobDetail),
                     ),
                   ],
                 ),
 
-                // Label Between
-                const SizedBox(height: 20),
+                // Label Between - Latest Jobs
                 LabelBetween(
                   title: "Latest Jobs",
                   buttonText: "See More",
                   onPressed: () {},
                 ),
+                SizedBox(height: responsive.defaultPadding() / 2),
 
-                const SizedBox(height: 10),
+                // Job Category Tabs
                 SizedBox(
-                  height: 50,
+                  height: responsive.isSmallDevice ? 45 : 50,
                   width: double.infinity,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -97,8 +101,8 @@ class HomeScreen extends StatelessWidget {
                     itemCount: controller.tabHomeData.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: Sizes.xs,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: responsive.defaultPadding() / 4,
                         ),
                         child: Obx(
                           () => JobCategoryTitle(
@@ -120,13 +124,15 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: responsive.defaultPadding() / 2),
+
+                // Job Cards List
                 Obx(
                   () => AnimatedSwitcher(
                     duration: const Duration(milliseconds: 300),
                     child: SizedBox(
                       key: ValueKey(controller.jobCategoryIndex.value),
-                      height: 250,
+                      height: responsive.isSmallDevice ? 220 : 250,
                       width: double.infinity,
                       child: ListView.separated(
                         shrinkWrap: true,
@@ -143,51 +149,37 @@ class HomeScreen extends StatelessWidget {
                                   .jobCategoryIndex
                                   .value]['content'][index];
 
-                          return controller
-                                  .tabHomeData[controller
-                                      .jobCategoryIndex
-                                      .value]['content'][index]
-                                  .isNotEmpty
-                              ? JobCard(
-                                title: job['title'],
-                                salary: job['salary'],
-                                jobType: job['jobType'],
-                                companyName: job['companyName'],
-                                companyLogo: job['companyLogo'],
-                                companyTextColor:
-                                    index % 2 == 1
-                                        ? Colors.black
-                                        : Colors.white,
-                                salaryColor:
-                                    index % 2 == 1
-                                        ? Colors.black
-                                        : Colors.white,
-                                dotColor:
-                                    index % 2 == 1
-                                        ? AppColors.textPrimary
-                                        : Colors.white,
-                                subTextColor:
-                                    index % 2 == 1
-                                        ? const Color.fromARGB(169, 39, 39, 39)
-                                        : const Color.fromARGB(
-                                          255,
-                                          210,
-                                          210,
-                                          210,
-                                        ),
-                                mainTextColor:
-                                    index % 2 == 1
-                                        ? Colors.black
-                                        : Colors.white,
-                                backgroundColor:
-                                    index % 2 == 1
-                                        ? Colors.white
-                                        : const Color.fromRGBO(0, 26, 78, 1),
-                              )
-                              : const SizedBox.shrink();
+                          if (job.isEmpty) return const SizedBox.shrink();
+
+                          bool isOdd = index % 2 == 1;
+
+                          return JobCard(
+                            title: job['title'],
+                            salary: job['salary'],
+                            jobType: job['jobType'],
+                            companyName: job['companyName'],
+                            companyLogo: job['companyLogo'],
+                            backgroundColor:
+                                isOdd
+                                    ? Colors.white
+                                    : const Color.fromRGBO(0, 26, 78, 1),
+                            mainTextColor: isOdd ? Colors.black : Colors.white,
+                            subTextColor:
+                                isOdd
+                                    ? const Color.fromARGB(169, 39, 39, 39)
+                                    : const Color.fromARGB(255, 210, 210, 210),
+                            companyTextColor:
+                                isOdd ? Colors.black : Colors.white,
+                            dotColor:
+                                isOdd ? AppColors.textPrimary : Colors.white,
+                            salaryColor: isOdd ? Colors.black : Colors.white,
+                            onTap: () => Get.toNamed(AppRoutes.jobDetail),
+                          );
                         },
                         separatorBuilder:
-                            (context, index) => const SizedBox(width: 10),
+                            (context, index) => SizedBox(
+                              width: responsive.defaultPadding() / 2,
+                            ),
                       ),
                     ),
                   ),

@@ -108,6 +108,7 @@ class PersonalProfileScreen extends StatelessWidget {
                 borderRadius: 15,
                 onPressed: () => controller.saveChange(),
               ),
+              const SizedBox(height: 30),
             ],
           ),
         ),

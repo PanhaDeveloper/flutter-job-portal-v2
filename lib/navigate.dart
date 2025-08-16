@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:job_app/features/home/accounts/screens/account_screen.dart';
 import 'package:job_app/features/home/fav/screens/favorite_screen.dart';
+import 'package:job_app/features/home/jobapplies/screens/job_applies_screen.dart';
 import 'package:job_app/features/home/screen/home_screen.dart';
 import 'package:job_app/features/home/widgets/custom_navigate.dart';
 
@@ -12,7 +13,7 @@ class AppNavigateController extends GetxController {
   final List<Widget> screens = [
     const HomeScreen(),
     const FavoriteScreen(),
-    const Center(child: Text('Job Screen')),
+    const JobAppliesScreen(),
     const AccountScreen(),
   ];
 

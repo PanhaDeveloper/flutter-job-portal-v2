@@ -8,9 +8,15 @@ class HomeController extends GetxController {
 
   final slideCurrentIndex = 0.obs;
   final jobCategoryIndex = 0.obs;
+  final locale = Locale('en', 'US').obs;
 
   final CarouselSliderController carouselController =
       CarouselSliderController();
+
+  void changeLocale(Locale newLocale) {
+    locale.value = newLocale;
+    Get.updateLocale(newLocale);
+  }
 
   void updateSlideIndex(int index) {
     slideCurrentIndex.value = index;

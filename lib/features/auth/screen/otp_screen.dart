@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_app/features/auth/controllers/auth_controller.dart';
 import 'package:pinput/pinput.dart';
 import 'package:job_app/cores/shared/button_widget.dart';
 import 'package:job_app/cores/utils/constants/colors.dart';
@@ -53,7 +54,7 @@ class OtpScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ButtonWidget(
               width: double.infinity,
-              onPressed: () {},
+              onPressed: () => AuthController.instance.confirmOtp(),
               btnTitle: "Confirm OTP",
             ),
           ],

@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -69,6 +68,7 @@ class SweetAlert {
                           fontWeight: FontWeight.bold,
                           color: data['color'],
                           decoration: TextDecoration.none,
+                          height: 1.2,
                         ),
                       ),
                       if (subTitle != null) ...[
@@ -80,6 +80,7 @@ class SweetAlert {
                             fontSize: 16,
                             color: Colors.grey,
                             decoration: TextDecoration.none,
+                            height: 1.5,
                           ),
                         ),
                       ],
@@ -97,7 +98,7 @@ class SweetAlert {
                                 },
                                 style: OutlinedButton.styleFrom(
                                   padding: const EdgeInsets.symmetric(
-                                    vertical: 20,
+                                    vertical: 10,
                                   ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
@@ -120,7 +121,7 @@ class SweetAlert {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: data['color'],
                                 padding: const EdgeInsets.symmetric(
-                                  vertical: 20,
+                                  vertical: 10,
                                 ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),

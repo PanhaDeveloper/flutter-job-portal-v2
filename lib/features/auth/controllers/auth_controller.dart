@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:job_app/cores/utils/helpers/network_manager.dart';
 import 'package:job_app/cores/utils/popups/loaders.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 enum AuthTab { login, register }
 
@@ -43,6 +44,15 @@ class AuthController extends GetxController {
       );
       return;
     }
+
+    try {
+      Loaders.successSnackBar(title: "Success", message: "Login successful!");
+
+      // Navigate to home or next screen
+      Get.offAllNamed(AppRoutes.home);
+    } catch (e) {
+      Loaders.errorSnackBar(title: "Error", message: e.toString());
+    }
   }
 
   Future<void> register() async {
@@ -66,6 +76,8 @@ class AuthController extends GetxController {
         title: "Success",
         message: "Registration successful!",
       );
+      // Navigate to OTP or home screen
+      Get.offAllNamed(AppRoutes.otp);
     } catch (e) {
       Loaders.errorSnackBar(title: "Error", message: e.toString());
     }
@@ -104,6 +116,23 @@ class AuthController extends GetxController {
         title: "Success",
         message: "Password reset successful!",
       );
+    } catch (e) {
+      Loaders.errorSnackBar(title: "Error", message: e.toString());
+    }
+  }
+
+  Future<void> confirmOtp() async {
+    if (!await NetworkManager.instance.isConnected()) {
+      Loaders.errorSnackBar(
+        title: "Network Error",
+        message: "No internet connection.",
+      );
+      return;
+    }
+
+    try {
+      Loaders.successSnackBar(title: "Success", message: "OTP verified!");
+      Get.offAllNamed(AppRoutes.authSuccess);
     } catch (e) {
       Loaders.errorSnackBar(title: "Error", message: e.toString());
     }

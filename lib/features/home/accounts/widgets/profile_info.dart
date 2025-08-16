@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({super.key});
@@ -25,17 +26,7 @@ class ProfileInfo extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
-                  child: Image.asset(
-                    'assets/profile_image.jpg',
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Icon(
-                        Icons.person,
-                        size: 40,
-                        color: Color(0xFF4A90E2),
-                      );
-                    },
-                  ),
+                  child: Icon(Icons.person, size: 40, color: Color(0xFF4A90E2)),
                 ),
               ),
               Positioned(
