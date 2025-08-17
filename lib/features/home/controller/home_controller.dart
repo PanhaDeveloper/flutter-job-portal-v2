@@ -18,11 +18,11 @@ class HomeController extends GetxController {
   var salaryRange = const RangeValues(250, 300).obs;
   var categories =
       {
-        'Full Time': true,
-        'Part Time': false,
-        'Freelance': false,
-        'Remote': false,
-        'Internship': false,
+        'full_time'.tr: true,
+        'part_time'.tr: false,
+        'freelance'.tr: false,
+        'remote'.tr: false,
+        'internship'.tr: false,
       }.obs;
 
   final CarouselSliderController carouselController =

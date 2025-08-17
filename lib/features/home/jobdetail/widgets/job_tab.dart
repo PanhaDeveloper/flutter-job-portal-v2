@@ -15,7 +15,7 @@ class JobTab extends StatelessWidget {
       children: [
         Obx(
           () => TabAuth(
-            text: 'Description',
+            text: 'description'.tr,
             textColor:
                 controller.selectedIndex.value == 0
                     ? AppColors.white
@@ -35,7 +35,7 @@ class JobTab extends StatelessWidget {
         const SizedBox(width: 8),
         Obx(
           () => TabAuth(
-            text: 'Company',
+            text: 'company'.tr,
             textColor:
                 controller.selectedIndex.value == 1
                     ? AppColors.white
@@ -55,7 +55,7 @@ class JobTab extends StatelessWidget {
         const SizedBox(width: 8),
         Obx(
           () => TabAuth(
-            text: 'Review',
+            text: 'review'.tr,
             textColor:
                 controller.selectedIndex.value == 2
                     ? AppColors.white

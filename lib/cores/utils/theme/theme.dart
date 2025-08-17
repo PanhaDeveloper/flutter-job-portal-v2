@@ -16,6 +16,7 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Poppins',
+    fontFamilyFallback: const ['KhmerOS'],
     disabledColor: AppColors.grey,
     brightness: Brightness.light,
     primaryColor: AppColors.primary,
@@ -33,6 +34,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Poppins',
+    fontFamilyFallback: const ['KhmerOS'],
     disabledColor: AppColors.grey,
     brightness: Brightness.dark,
     primaryColor: AppColors.primary,

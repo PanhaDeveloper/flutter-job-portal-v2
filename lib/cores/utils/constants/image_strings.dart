@@ -38,4 +38,5 @@ class Images {
   // ---- Flag Images ---
   static const String usFlag = 'assets/general/en.png';
   static const String khFlag = 'assets/general/kh.png';
+  static const String cnFlag = 'assets/general/ch.png';
 }

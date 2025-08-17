@@ -17,6 +17,8 @@ class CustomAppBarThemes {
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
       color: AppColors.black,
+      fontFamily: 'Poppins',
+      fontFamilyFallback: ['KhmerOS'],
     ),
   );
   static const darkAppBarTheme = AppBarTheme(
@@ -31,6 +33,8 @@ class CustomAppBarThemes {
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
       color: AppColors.white,
+      fontFamily: 'Poppins',
+      fontFamilyFallback: ['KhmerOS'],
     ),
   );
 }

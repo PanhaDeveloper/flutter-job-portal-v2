@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:job_app/cores/bindings/general_binding.dart';
 import 'package:job_app/cores/utils/theme/theme.dart';
 import 'package:job_app/locale/locale.dart';
-import 'package:job_app/navigate.dart';
 import 'package:job_app/routes/app_pages.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -18,10 +19,9 @@ class App extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      // initialBinding: GeneralBinding(),
-      // initialRoute: AppRoutes.splash,
+      initialBinding: GeneralBinding(),
+      initialRoute: AppRoutes.splash,
       getPages: appPages,
-      home: const AppNavigateBar(),
       translations: Localization(),
       locale: const Locale('km', 'KH'),
       fallbackLocale: const Locale('en', 'US'),

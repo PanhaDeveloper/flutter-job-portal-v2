@@ -5,6 +5,7 @@ import 'package:job_app/features/auth/screen/auth_success_screen.dart';
 import 'package:job_app/features/auth/screen/forgot_password_screen.dart';
 import 'package:job_app/features/auth/screen/otp_screen.dart';
 import 'package:job_app/features/auth/screen/reset_password_screen.dart';
+import 'package:job_app/features/home/accounts/binding/change_password_binding.dart';
 import 'package:job_app/features/home/accounts/screens/change_password_screen.dart';
 import 'package:job_app/features/home/accounts/screens/personal_profile_screen.dart';
 import 'package:job_app/features/home/applynow/binding/apply_now_bindig.dart';
@@ -14,6 +15,7 @@ import 'package:job_app/features/home/fav/screens/favorite_screen.dart';
 import 'package:job_app/features/home/jobdetail/binding/job_detail_binding.dart';
 import 'package:job_app/features/home/jobdetail/screens/job_detail_screen.dart';
 import 'package:job_app/features/home/notification/screens/notification_screen.dart';
+import 'package:job_app/features/home/search_result/screens/search_result_screen.dart';
 import 'package:job_app/features/onboarding/binding/onboarding_binding.dart';
 import 'package:job_app/features/splash/binding/splash_binding.dart';
 import 'package:job_app/features/splash/screen/splash_screen.dart';
@@ -70,6 +72,7 @@ final appPages = [
   GetPage(
     name: AppRoutes.changePassword,
     page: () => const ChangePasswordScreen(),
+    binding: ChangePasswordBinding(),
   ),
 
   GetPage(name: AppRoutes.favoriteJobs, page: () => const FavoriteScreen()),
@@ -87,4 +90,6 @@ final appPages = [
   ),
 
   GetPage(name: AppRoutes.previewPdf, page: () => PreviewPdfScreen()),
+
+  GetPage(name: AppRoutes.searchResult, page: () => const SearchResultScreen()),
 ];

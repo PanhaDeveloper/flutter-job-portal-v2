@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:job_app/cores/shared/app_bar_widget.dart';
 import 'package:job_app/features/home/notification/widget/notification_card.dart';
 
@@ -7,9 +8,9 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: AppBarWidget(title: 'Notifications'),
-      body: Padding(
+    return Scaffold(
+      appBar: AppBarWidget(title: 'notification'.tr),
+      body: const Padding(
         padding: EdgeInsets.only(top: 10.0),
         child: Column(
           children: [

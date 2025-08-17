@@ -63,3 +63,7 @@ flutter:
           weight: 400
         - asset: assets/fonts/Poppins-Medium.ttf
           weight: 500
+    - family: KhmerOS
+      fonts:
+        - asset: assets/fonts/KhmerOS_siemreap.ttf
+          weight: 400

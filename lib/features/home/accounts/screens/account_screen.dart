@@ -47,13 +47,13 @@ class AccountScreen extends StatelessWidget {
                   color: const Color(0xFFF7F7F7),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    StatColumn(label: 'Applied', value: '23'),
-                    StatColumn(label: 'Reviewed', value: '14'),
-                    StatColumn(label: 'Accepted', value: '20'),
+                    StatColumn(label: 'applied'.tr, value: '23'),
+                    StatColumn(label: 'reviewed'.tr, value: '14'),
+                    StatColumn(label: 'accepted'.tr, value: '20'),
                   ],
                 ),
               ),
@@ -62,22 +62,22 @@ class AccountScreen extends StatelessWidget {
               const SizedBox(height: 24),
               MenuItem(
                 icon: Iconsax.user,
-                title: 'Personal Profile',
+                title: 'personal_profile'.tr,
                 onTap: () => Get.toNamed(AppRoutes.personalProfile),
               ),
               MenuItem(
                 icon: Iconsax.lock,
-                title: 'Change Password',
+                title: 'change_password'.tr,
                 onTap: () => Get.toNamed(AppRoutes.changePassword),
               ),
               MenuItem(
                 icon: Iconsax.shopping_bag,
-                title: 'Job Applied',
+                title: 'job_applied'.tr,
                 onTap: () => AppNavigateController.instance.currentIndex(2),
               ),
               MenuItem(
                 icon: Iconsax.setting_2,
-                title: 'Settings',
+                title: 'settings'.tr,
                 onTap: () {},
               ),
 
@@ -86,7 +86,7 @@ class AccountScreen extends StatelessWidget {
               ButtonWidget(
                 width: double.infinity,
                 height: 50,
-                btnTitle: 'Logout',
+                btnTitle: 'logout'.tr,
                 btnBgColor: const Color(0xFFFF4757),
                 borderRadius: 15,
                 isIcon: true,

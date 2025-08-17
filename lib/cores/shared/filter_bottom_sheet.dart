@@ -6,6 +6,7 @@ import 'package:job_app/cores/shared/custom_text_field.dart';
 import 'package:job_app/cores/utils/helpers/app_resposive.dart';
 import 'package:job_app/features/home/controller/home_controller.dart';
 import 'package:job_app/features/home/widgets/choice_chip_widget.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class FilterBottomSheet extends StatelessWidget {
   const FilterBottomSheet({
@@ -28,9 +29,12 @@ class FilterBottomSheet extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Job Location
-              const Text(
-                'Job Location',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              Text(
+                'job_location'.tr,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 8),
               CustomTextField(
@@ -40,9 +44,12 @@ class FilterBottomSheet extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Work Interest
-              const Text(
-                'Work Interest',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              Text(
+                'work_interests'.tr,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 8),
               CustomTextField(
@@ -59,9 +66,12 @@ class FilterBottomSheet extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Salary Range
-              const Text(
-                'Salary Range',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              Text(
+                'salary_range'.tr,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
 
               // Range Slider
@@ -97,9 +107,12 @@ class FilterBottomSheet extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Categories
-              const Text(
-                'Categories',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              Text(
+                'categories'.tr,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Column(
                 children:
@@ -121,11 +134,9 @@ class FilterBottomSheet extends StatelessWidget {
               ButtonWidget(
                 width: double.infinity,
                 height: 50,
-                btnTitle: 'Apply Filters',
+                btnTitle: 'apply_filter'.tr,
                 borderRadius: 15,
-                onPressed: () {
-                  Get.back();
-                },
+                onPressed: () => Get.toNamed(AppRoutes.searchResult),
               ),
             ],
           ),

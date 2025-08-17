@@ -15,4 +15,5 @@ class AppRoutes {
   static const String jobApply = '/job-apply';
   static const String applyNow = '/apply-now';
   static const String previewPdf = '/preview-pdf';
+  static const String searchResult = '/search-result';
 }

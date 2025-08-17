@@ -92,6 +92,20 @@ class HeaderWidget extends StatelessWidget {
                             Get.back();
                           },
                         ),
+                        ListTile(
+                          leading: Image.asset(
+                            Images.cnFlag,
+                            width: 24,
+                            height: 24,
+                          ),
+                          title: Text('zh'.tr),
+                          onTap: () {
+                            HomeController.instance.changeLocale(
+                              const Locale('zh', 'CN'),
+                            );
+                            Get.back();
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -100,14 +114,18 @@ class HeaderWidget extends StatelessWidget {
               child: Obx(() {
                 final locale = HomeController.instance.locale.value;
                 final flagImage =
-                    locale.languageCode == 'km' ? Images.khFlag : Images.usFlag;
+                    locale.languageCode == 'km'
+                        ? Images.khFlag
+                        : locale.languageCode == 'zh'
+                        ? Images.cnFlag
+                        : Images.usFlag;
                 return Image.asset(flagImage, width: 24, height: 24);
               }),
             ),
             const SizedBox(width: 10),
             Stack(
               children: [
-                InkWell(
+                GestureDetector(
                   child: const Icon(
                     Iconsax.notification,
                     size: 28,
