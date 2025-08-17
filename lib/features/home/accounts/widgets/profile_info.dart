@@ -25,7 +25,11 @@ class ProfileInfo extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
-                  child: const Icon(Icons.person, size: 40, color: Color(0xFF4A90E2)),
+                  child: const Icon(
+                    Icons.person,
+                    size: 40,
+                    color: Color(0xFF4A90E2),
+                  ),
                 ),
               ),
               Positioned(
@@ -44,23 +48,27 @@ class ProfileInfo extends StatelessWidget {
             ],
           ),
           const SizedBox(width: 12),
-          const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Ponhakol',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+          const Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Ponhakol',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              // Email
-              Text(
-                'ponhakol@gmail.com',
-                style: TextStyle(color: Colors.white70, fontSize: 14),
-              ),
-            ],
+                // Email
+                Text(
+                  'ponhakol@gmail.com',
+                  style: TextStyle(color: Colors.white70, fontSize: 14),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ),
         ],
       ),

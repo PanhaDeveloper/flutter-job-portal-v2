@@ -51,9 +51,15 @@ class AccountScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    StatColumn(label: 'applied'.tr, value: '23'),
-                    StatColumn(label: 'reviewed'.tr, value: '14'),
-                    StatColumn(label: 'accepted'.tr, value: '20'),
+                    Expanded(
+                      child: StatColumn(label: 'applied'.tr, value: '23'),
+                    ),
+                    Expanded(
+                      child: StatColumn(label: 'reviewed'.tr, value: '14'),
+                    ),
+                    Expanded(
+                      child: StatColumn(label: 'accepted'.tr, value: '20'),
+                    ),
                   ],
                 ),
               ),

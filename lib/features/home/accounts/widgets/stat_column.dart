@@ -10,7 +10,12 @@ class StatColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(label, style: const TextStyle(color: Colors.black, fontSize: 12)),
+        Text(
+          label,
+          style: const TextStyle(color: Colors.black, fontSize: 12),
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+        ),
         const SizedBox(height: 4),
         Text(
           value,
@@ -19,6 +24,8 @@ class StatColumn extends StatelessWidget {
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
         ),
       ],
     );

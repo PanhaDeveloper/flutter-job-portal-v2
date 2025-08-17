@@ -35,22 +35,30 @@ class LabelBetween extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: titleFontSize,
-            fontWeight: FontWeight.bold,
+        Expanded(
+          flex: 3,
+          child: Text(
+            title,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: titleFontSize,
+              fontWeight: FontWeight.bold,
+            ),
+            overflow: TextOverflow.ellipsis,
           ),
         ),
-        TextButton(
-          onPressed: onPressed,
-          child: Text(
-            buttonText,
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              color: AppColors.buttonPrimary,
-              fontSize: buttonFontSize,
+        Flexible(
+          flex: 2,
+          child: TextButton(
+            onPressed: onPressed,
+            child: Text(
+              buttonText,
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                color: AppColors.buttonPrimary,
+                fontSize: buttonFontSize,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ),

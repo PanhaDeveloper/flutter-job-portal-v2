@@ -79,13 +79,18 @@ class CardSlider extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              data.title,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: responsive.titleFontSize(),
-                                color: Colors.white,
+                            Flexible(
+                              child: Text(
+                                data.title,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: responsive.titleFontSize(),
+                                  color: Colors.white,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
                               ),
                             ),
                             SizedBox(height: responsive.isSmallDevice ? 8 : 15),

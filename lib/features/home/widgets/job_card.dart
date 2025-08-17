@@ -112,107 +112,143 @@ class JobCard extends StatelessWidget {
             padding: EdgeInsets.all(padding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: mainTextColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: titleFontSize,
+                // Title section
+                Flexible(
+                  flex: 2,
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      color: mainTextColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: titleFontSize,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
                 ),
                 SizedBox(height: spacingSmall),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '\u2022 ',
-                      style: TextStyle(color: dotColor, fontSize: subFontSize),
-                    ),
-                    Expanded(
-                      child: RichText(
-                        text: TextSpan(
-                          text: 'Salary: ',
-                          style: TextStyle(
-                            color: subTextColor,
-                            fontSize: subFontSize,
+
+                // Details section
+                Flexible(
+                  flex: 3,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '\u2022 ',
+                            style: TextStyle(
+                              color: dotColor,
+                              fontSize: subFontSize,
+                            ),
                           ),
-                          children: [
-                            TextSpan(
-                              text: salary,
+                          Expanded(
+                            child: RichText(
+                              text: TextSpan(
+                                text: 'Salary: ',
+                                style: TextStyle(
+                                  color: subTextColor,
+                                  fontSize: subFontSize,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: salary,
+                                    style: TextStyle(
+                                      color: salaryColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: subFontSize,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: spacingSmall),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '\u2022 ',
+                            style: TextStyle(
+                              color: dotColor,
+                              fontSize: subFontSize,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              jobType,
                               style: TextStyle(
-                                color: salaryColor,
-                                fontWeight: FontWeight.bold,
+                                color: subTextColor,
                                 fontSize: subFontSize,
                               ),
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Divider
+                Flexible(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      SizedBox(height: spacingMedium),
+                      const DottedLine(
+                        dashLength: 6,
+                        dashColor: Colors.grey,
+                        lineThickness: 1,
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Company section
+                Flexible(
+                  flex: 2,
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(borderRadius / 4),
+                        child: Image.asset(
+                          companyLogo,
+                          width:
+                              responsive.isSmallDevice
+                                  ? 25
+                                  : responsive.isMediumDevice
+                                  ? 30
+                                  : 35,
+                          height:
+                              responsive.isSmallDevice
+                                  ? 25
+                                  : responsive.isMediumDevice
+                                  ? 30
+                                  : 35,
+                          fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: spacingSmall),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '\u2022 ',
-                      style: TextStyle(color: dotColor, fontSize: subFontSize),
-                    ),
-                    Expanded(
-                      child: Text(
-                        jobType,
-                        style: TextStyle(
-                          color: subTextColor,
-                          fontSize: subFontSize,
+                      SizedBox(width: spacingSmall),
+                      Expanded(
+                        child: Text(
+                          companyName,
+                          style: TextStyle(
+                            color: companyTextColor,
+                            fontSize: subFontSize,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: spacingMedium),
-                const DottedLine(
-                  dashLength: 6,
-                  dashColor: Colors.grey,
-                  lineThickness: 1,
-                ),
-                SizedBox(height: spacingMedium),
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(borderRadius / 4),
-                      child: Image.asset(
-                        companyLogo,
-                        width:
-                            responsive.isSmallDevice
-                                ? 30
-                                : responsive.isMediumDevice
-                                ? 35
-                                : 40,
-                        height:
-                            responsive.isSmallDevice
-                                ? 30
-                                : responsive.isMediumDevice
-                                ? 35
-                                : 40,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(width: spacingSmall * 2),
-                    Expanded(
-                      child: Text(
-                        companyName,
-                        style: TextStyle(
-                          color: companyTextColor,
-                          fontSize: subFontSize,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
