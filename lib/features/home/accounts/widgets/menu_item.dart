@@ -15,8 +15,8 @@ class MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+    return SizedBox(
+      width: double.infinity,
       child: ListTile(
         leading: Icon(icon, color: Colors.grey[600], size: 24),
         title: Text(
@@ -27,7 +27,7 @@ class MenuItem extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        trailing: Icon(
+        trailing: const Icon(
           Icons.arrow_forward_ios,
           color: AppColors.primary,
           size: 16,

@@ -27,7 +27,7 @@ class AuthScreen extends StatelessWidget {
               child: Row(
                 children: [
                   TabAuth(
-                    text: "Login",
+                    text: 'Login',
                     textColor:
                         controller.isLogin
                             ? AppColors.white
@@ -43,7 +43,7 @@ class AuthScreen extends StatelessWidget {
                     ),
                   ),
                   TabAuth(
-                    text: "Register",
+                    text: 'Register',
                     textColor:
                         !controller.isLogin
                             ? AppColors.white
@@ -64,7 +64,7 @@ class AuthScreen extends StatelessWidget {
             sizeBox: 20,
             content: AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
-              child: controller.isLogin ? LoginWidget() : RegisterWidget(),
+              child: controller.isLogin ? const LoginWidget() : const RegisterWidget(),
             ),
           ),
         ),

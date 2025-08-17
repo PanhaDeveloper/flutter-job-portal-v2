@@ -17,8 +17,8 @@ class AuthController extends GetxController {
   final isObscure = true.obs;
   final isObscureConfirmPassword = true.obs;
 
-  final hintTextRx = "user@gmail.com".obs;
-  final hintPasswordRx = "••••••••".obs;
+  final hintTextRx = 'user@gmail.com'.obs;
+  final hintPasswordRx = '••••••••'.obs;
 
   final selectedTab = AuthTab.login.obs;
 
@@ -39,19 +39,19 @@ class AuthController extends GetxController {
 
     if (!await NetworkManager.instance.isConnected()) {
       Loaders.errorSnackBar(
-        title: "Network Error",
-        message: "No internet connection.",
+        title: 'Network Error',
+        message: 'No internet connection.',
       );
       return;
     }
 
     try {
-      Loaders.successSnackBar(title: "Success", message: "Login successful!");
+      Loaders.successSnackBar(title: 'Success', message: 'Login successful!');
 
       // Navigate to home or next screen
       Get.offAllNamed(AppRoutes.home);
     } catch (e) {
-      Loaders.errorSnackBar(title: "Error", message: e.toString());
+      Loaders.errorSnackBar(title: 'Error', message: e.toString());
     }
   }
 
@@ -60,26 +60,26 @@ class AuthController extends GetxController {
 
     if (!await NetworkManager.instance.isConnected()) {
       Loaders.errorSnackBar(
-        title: "Network Error",
-        message: "No internet connection.",
+        title: 'Network Error',
+        message: 'No internet connection.',
       );
       return;
     }
 
     if (passwordController.text != confirmPasswordController.text) {
-      Loaders.errorSnackBar(title: "Error", message: "Passwords do not match.");
+      Loaders.errorSnackBar(title: 'Error', message: 'Passwords do not match.');
       return;
     }
 
     try {
       Loaders.successSnackBar(
-        title: "Success",
-        message: "Registration successful!",
+        title: 'Success',
+        message: 'Registration successful!',
       );
       // Navigate to OTP or home screen
       Get.offAllNamed(AppRoutes.otp);
     } catch (e) {
-      Loaders.errorSnackBar(title: "Error", message: e.toString());
+      Loaders.errorSnackBar(title: 'Error', message: e.toString());
     }
   }
 
@@ -88,8 +88,8 @@ class AuthController extends GetxController {
 
     if (!await NetworkManager.instance.isConnected()) {
       Loaders.errorSnackBar(
-        title: "Network Error",
-        message: "No internet connection.",
+        title: 'Network Error',
+        message: 'No internet connection.',
       );
       return;
     }
@@ -100,41 +100,41 @@ class AuthController extends GetxController {
 
     if (!await NetworkManager.instance.isConnected()) {
       Loaders.errorSnackBar(
-        title: "Network Error",
-        message: "No internet connection.",
+        title: 'Network Error',
+        message: 'No internet connection.',
       );
       return;
     }
 
     if (passwordController.text != confirmPasswordController.text) {
-      Loaders.errorSnackBar(title: "Error", message: "Passwords do not match.");
+      Loaders.errorSnackBar(title: 'Error', message: 'Passwords do not match.');
       return;
     }
 
     try {
       Loaders.successSnackBar(
-        title: "Success",
-        message: "Password reset successful!",
+        title: 'Success',
+        message: 'Password reset successful!',
       );
     } catch (e) {
-      Loaders.errorSnackBar(title: "Error", message: e.toString());
+      Loaders.errorSnackBar(title: 'Error', message: e.toString());
     }
   }
 
   Future<void> confirmOtp() async {
     if (!await NetworkManager.instance.isConnected()) {
       Loaders.errorSnackBar(
-        title: "Network Error",
-        message: "No internet connection.",
+        title: 'Network Error',
+        message: 'No internet connection.',
       );
       return;
     }
 
     try {
-      Loaders.successSnackBar(title: "Success", message: "OTP verified!");
+      Loaders.successSnackBar(title: 'Success', message: 'OTP verified!');
       Get.offAllNamed(AppRoutes.authSuccess);
     } catch (e) {
-      Loaders.errorSnackBar(title: "Error", message: e.toString());
+      Loaders.errorSnackBar(title: 'Error', message: e.toString());
     }
   }
 }

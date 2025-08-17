@@ -18,7 +18,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: AppColors.white),
+        iconTheme: const IconThemeData(color: AppColors.white),
       ),
       backgroundColor: AppColors.boldPrimary,
       body: AuthPanelWidget(
@@ -28,8 +28,8 @@ class ForgotPasswordScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Forgot Password",
+              const Text(
+                'Forgot Password',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
@@ -37,14 +37,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 5),
-              Text(
-                "Please enter your email for us to send \nconfirmation regarding your password change.",
+              const Text(
+                'Please enter your email for us to send \nconfirmation regarding your password change.',
                 style: TextStyle(color: AppColors.textSecondary, height: 1.6),
               ),
 
               const SizedBox(height: Sizes.sm),
               FormFieldWidget(
-                textTitle: "Email",
+                textTitle: 'Email',
                 formField: Obx(
                   () => TextFormFieldWidget(
                     hintText: controller.hintTextRx.value,
@@ -57,7 +57,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               ButtonWidget(
                 width: double.infinity,
                 onPressed: () => controller.forgotPassword(),
-                btnTitle: "Send",
+                btnTitle: 'Send',
               ),
             ],
           ),

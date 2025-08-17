@@ -9,6 +9,7 @@ import 'package:job_app/features/home/jobdetail/widgets/job_tab.dart';
 import 'package:job_app/features/home/jobdetail/widgets/tab_company.dart';
 import 'package:job_app/features/home/jobdetail/widgets/tab_desc.dart';
 import 'package:job_app/features/home/jobdetail/widgets/tab_review.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class JobDetailScreen extends StatelessWidget {
   const JobDetailScreen({super.key});
@@ -45,7 +46,7 @@ class JobDetailScreen extends StatelessWidget {
                         runSpacing: 12,
                         children: [
                           const Text(
-                            "Share to",
+                            'Share to',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -57,7 +58,7 @@ class JobDetailScreen extends StatelessWidget {
                             children: [
                               CircleButton(
                                 icon: Icons.facebook,
-                                label: "Facebook",
+                                label: 'Facebook',
                                 color: Colors.blue,
                                 onTap: () {
                                   Get.back();
@@ -65,7 +66,7 @@ class JobDetailScreen extends StatelessWidget {
                               ),
                               CircleButton(
                                 icon: Icons.link,
-                                label: "Copy Link",
+                                label: 'Copy Link',
                                 color: Colors.grey,
                                 onTap: () {
                                   Get.back();
@@ -73,7 +74,7 @@ class JobDetailScreen extends StatelessWidget {
                               ),
                               CircleButton(
                                 icon: Icons.message,
-                                label: "Messenger",
+                                label: 'Messenger',
                                 color: Colors.blueAccent,
                                 onTap: () {
                                   Get.back();
@@ -81,7 +82,7 @@ class JobDetailScreen extends StatelessWidget {
                               ),
                               CircleButton(
                                 icon: Icons.telegram,
-                                label: "Telegram",
+                                label: 'Telegram',
                                 color: Colors.lightBlue,
                                 onTap: () {
                                   Get.back();
@@ -94,7 +95,7 @@ class JobDetailScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: Icon(Icons.share, color: Colors.white, size: 20),
+                child: const Icon(Icons.share, color: Colors.white, size: 20),
               ),
             ),
           ),
@@ -103,7 +104,7 @@ class JobDetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            JobBox(
+            const JobBox(
               logoTitle: 'gojek',
               jobTitle: 'Software Engineer',
               companyLocation: 'Gojek • Jakarta Indonesia',
@@ -167,7 +168,7 @@ class JobDetailScreen extends StatelessWidget {
             Expanded(
               flex: 4,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.toNamed(AppRoutes.applyNow),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.boldPrimary,
                 ),

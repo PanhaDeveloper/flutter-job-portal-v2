@@ -10,7 +10,7 @@ class SweetAlert {
     required SweetAlertType type,
     required String title,
     String? subTitle,
-    String confirmText = "OK",
+    String confirmText = 'OK',
     VoidCallback? onConfirm,
     String? cancelText,
     VoidCallback? onCancel,

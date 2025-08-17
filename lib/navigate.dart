@@ -40,7 +40,7 @@ class AppNavigateBar extends StatelessWidget {
             children: [
               CustomNavigate(
                 iconPath: Iconsax.home,
-                label: "Home",
+                label: 'home'.tr,
                 index: 0,
                 isSelected: controller.selectIndex.value == 0,
                 onTab: () {
@@ -49,7 +49,7 @@ class AppNavigateBar extends StatelessWidget {
               ),
               CustomNavigate(
                 iconPath: Iconsax.heart,
-                label: "Favorite",
+                label: 'favorites'.tr,
                 index: 1,
                 isSelected: controller.selectIndex.value == 1,
                 onTab: () {
@@ -58,7 +58,7 @@ class AppNavigateBar extends StatelessWidget {
               ),
               CustomNavigate(
                 iconPath: Iconsax.shopping_bag4,
-                label: "Job",
+                label: 'jobs'.tr,
                 index: 2,
                 isSelected: controller.selectIndex.value == 2,
                 onTab: () {
@@ -67,7 +67,7 @@ class AppNavigateBar extends StatelessWidget {
               ),
               CustomNavigate(
                 iconPath: Iconsax.user,
-                label: "Profile",
+                label: 'profile'.tr,
                 index: 3,
                 isSelected: controller.selectIndex.value == 3,
                 onTab: () {

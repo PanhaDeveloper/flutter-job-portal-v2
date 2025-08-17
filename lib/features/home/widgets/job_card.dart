@@ -94,14 +94,14 @@ class JobCard extends StatelessWidget {
             : 12;
 
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Card(
         color: backgroundColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          side: BorderSide(
-            color: const Color.fromARGB(255, 245, 245, 245),
+          side: const BorderSide(
+            color: Color.fromARGB(255, 245, 245, 245),
             width: 1,
           ),
         ),
@@ -127,13 +127,13 @@ class JobCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "\u2022 ",
+                      '\u2022 ',
                       style: TextStyle(color: dotColor, fontSize: subFontSize),
                     ),
                     Expanded(
                       child: RichText(
                         text: TextSpan(
-                          text: "Salary: ",
+                          text: 'Salary: ',
                           style: TextStyle(
                             color: subTextColor,
                             fontSize: subFontSize,
@@ -158,7 +158,7 @@ class JobCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "\u2022 ",
+                      '\u2022 ',
                       style: TextStyle(color: dotColor, fontSize: subFontSize),
                     ),
                     Expanded(
@@ -173,7 +173,7 @@ class JobCard extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: spacingMedium),
-                DottedLine(
+                const DottedLine(
                   dashLength: 6,
                   dashColor: Colors.grey,
                   lineThickness: 1,

@@ -74,8 +74,8 @@ class PersonalProfileController extends GetxController {
       }
     } catch (e) {
       Loaders.errorSnackBar(
-        title: "Error",
-        message: "Failed to pick image: ${e.toString()}",
+        title: 'Error',
+        message: 'Failed to pick image: ${e.toString()}',
       );
     }
   }
@@ -83,8 +83,8 @@ class PersonalProfileController extends GetxController {
   void logout() async {
     if (!await NetworkManager.instance.isConnected()) {
       Loaders.errorSnackBar(
-        title: "Network Error",
-        message: "No internet connection.",
+        title: 'Network Error',
+        message: 'No internet connection.',
       );
       return;
     }
@@ -92,10 +92,10 @@ class PersonalProfileController extends GetxController {
     SweetAlert.show(
       barrierDismissible: true,
       type: SweetAlertType.warning,
-      title: "Are you sure?",
-      subTitle: "Do you really want to logout?",
-      confirmText: "Yes",
-      cancelText: "Cancel",
+      title: 'Are you sure?',
+      subTitle: 'Do you really want to logout?',
+      confirmText: 'Yes',
+      cancelText: 'Cancel',
       onConfirm: () {
         // Get.offAllNamed('/login');
       },
@@ -108,8 +108,8 @@ class PersonalProfileController extends GetxController {
 
     if (!await NetworkManager.instance.isConnected()) {
       Loaders.errorSnackBar(
-        title: "Network Error",
-        message: "No internet connection.",
+        title: 'Network Error',
+        message: 'No internet connection.',
       );
       return;
     }

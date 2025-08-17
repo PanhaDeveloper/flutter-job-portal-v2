@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:job_app/cores/utils/constants/image_strings.dart';
 
 class HomeController extends GetxController {
@@ -8,14 +9,42 @@ class HomeController extends GetxController {
 
   final slideCurrentIndex = 0.obs;
   final jobCategoryIndex = 0.obs;
-  final locale = Locale('en', 'US').obs;
+  final locale = const Locale('en', 'US').obs;
+  final storage = GetStorage();
+
+  var jobLocation = 'Phnom Penh, Cambodia'.obs;
+  var workInterest = 'Graphic & Design'.obs;
+  var selectedRoles = <String>[].obs;
+  var salaryRange = const RangeValues(250, 300).obs;
+  var categories =
+      {
+        'Full Time': true,
+        'Part Time': false,
+        'Freelance': false,
+        'Remote': false,
+        'Internship': false,
+      }.obs;
 
   final CarouselSliderController carouselController =
       CarouselSliderController();
 
+  @override
+  void onInit() {
+    super.onInit();
+    final savedLocale = storage.read('locale');
+    if (savedLocale != null) {
+      final parts = savedLocale.split('_'); // "en_US" => ['en', 'US']
+      locale.value = Locale(parts[0], parts[1]);
+    }
+  }
+
   void changeLocale(Locale newLocale) {
     locale.value = newLocale;
     Get.updateLocale(newLocale);
+    storage.write(
+      'locale',
+      '${newLocale.languageCode}_${newLocale.countryCode}',
+    );
   }
 
   void updateSlideIndex(int index) {
@@ -37,31 +66,31 @@ class HomeController extends GetxController {
       'textColor': Colors.white,
       'content': [
         {
-          'title': "Flutter Developer",
-          'salary': "\$250-\$400",
+          'title': 'Flutter Developer',
+          'salary': '\$250-\$400',
           'jobType': 'Fulltime, remote/onsite',
-          'companyName': "BELTEI",
+          'companyName': 'BELTEI',
           'companyLogo': Images.cardLogo1,
         },
         {
-          'title': "React Developer",
-          'salary': "\$300-\$500",
+          'title': 'React Developer',
+          'salary': '\$300-\$500',
           'jobType': 'Part-time, onsite',
-          'companyName': "TechCorp",
+          'companyName': 'TechCorp',
           'companyLogo': Images.cardLogo1,
         },
         {
-          'title': "Flutter Developer",
-          'salary': "\$250-\$400",
+          'title': 'Flutter Developer',
+          'salary': '\$250-\$400',
           'jobType': 'Fulltime, remote/onsite',
-          'companyName': "BELTEI",
+          'companyName': 'BELTEI',
           'companyLogo': Images.cardLogo1,
         },
         {
-          'title': "React Developer",
-          'salary': "\$300-\$500",
+          'title': 'React Developer',
+          'salary': '\$300-\$500',
           'jobType': 'Part-time, onsite',
-          'companyName': "TechCorp",
+          'companyName': 'TechCorp',
           'companyLogo': Images.cardLogo1,
         },
       ],
@@ -72,10 +101,10 @@ class HomeController extends GetxController {
       'textColor': Colors.blue,
       'content': [
         {
-          'title': "Java Developer",
-          'salary': "\$500-\$700",
+          'title': 'Java Developer',
+          'salary': '\$500-\$700',
           'jobType': 'Fulltime, remote',
-          'companyName': "GlobalSoft",
+          'companyName': 'GlobalSoft',
           'companyLogo': Images.cardLogo1,
         },
       ],

@@ -36,13 +36,13 @@ class NotificationCard extends StatelessWidget {
         child: Card(
           elevation: 0,
           color: cardColor,
-          margin: EdgeInsets.only(bottom: 0),
+          margin: const EdgeInsets.only(bottom: 0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0.0),
             // side: BorderSide(color: Colors.grey, width: 1.0),
           ),
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -51,7 +51,7 @@ class NotificationCard extends StatelessWidget {
                   backgroundColor: AppColors.boldPrimary.withOpacity(0.1),
                   child: Icon(icon, color: AppColors.boldPrimary, size: 18),
                 ),
-                SizedBox(width: 16.0),
+                const SizedBox(width: 16.0),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +61,7 @@ class NotificationCard extends StatelessWidget {
                         children: [
                           Text(
                             title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.bold,
                               color: Color.fromRGBO(31, 44, 52, 1),
@@ -73,10 +73,10 @@ class NotificationCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 8.0),
+                      const SizedBox(height: 8.0),
                       Text(
                         description,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14.0,
                           color: AppColors.textSecondary,
                         ),

@@ -15,8 +15,8 @@ class SplashScreen extends StatelessWidget {
             left: -50,
             child: Image.asset(Images.circleLogo, width: 150),
           ),
-          Positioned(top: 250, right: -50, child: CircleWidget(size: 120)),
-          Positioned(bottom: -80, left: -60, child: CircleWidget(size: 180)),
+          const Positioned(top: 250, right: -50, child: CircleWidget(size: 120)),
+          const Positioned(bottom: -80, left: -60, child: CircleWidget(size: 180)),
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,

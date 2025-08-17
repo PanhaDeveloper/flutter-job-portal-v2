@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:job_app/cores/shared/filter_bottom_sheet.dart';
 import 'package:job_app/cores/shared/label_between.dart';
 import 'package:job_app/cores/utils/constants/colors.dart';
 import 'package:job_app/cores/utils/constants/image_strings.dart';
@@ -32,49 +33,65 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 // Header
-                HeaderWidget(),
+                const HeaderWidget(),
                 SizedBox(height: responsive.defaultPadding()),
 
                 // Search Box
-                SearchBox(),
+                SearchBox(
+                  onPressed: () {
+                    Get.bottomSheet(
+                      backgroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      FilterBottomSheet(
+                        responsive: responsive,
+                        controller: controller,
+                      ),
+                      isScrollControlled: true,
+                    );
+                  },
+                ),
                 SizedBox(height: responsive.defaultPadding()),
 
                 // Label Between - Popular Jobs
                 LabelBetween(
-                  title: "Popular Jobs",
-                  buttonText: "See More",
+                  title: 'popular_jobs'.tr,
+                  buttonText: 'see_more'.tr,
                   onPressed: () {},
                 ),
                 // Slider
                 CardSlider(
                   cardDataList: [
                     CardData(
-                      title: "Creative \nVideo Editor",
-                      jobText: "30+ Jobs Available",
+                      title: 'Creative \nVideo Editor',
+                      jobText: '30+ Jobs Available',
                       backgroundImage: Images.vectorImage,
                       mainImage: Images.cameraIcon,
                       arrowIcon: Iconsax.arrow_right_2,
                       onTap: () => Get.toNamed(AppRoutes.jobDetail),
                     ),
                     CardData(
-                      title: "Creative \nVideo Editor",
-                      jobText: "30+ Jobs Available",
+                      title: 'Creative \nVideo Editor',
+                      jobText: '30+ Jobs Available',
                       backgroundImage: Images.vectorImage,
                       mainImage: Images.cameraIcon,
                       arrowIcon: Iconsax.arrow_right_2,
                       onTap: () => Get.toNamed(AppRoutes.jobDetail),
                     ),
                     CardData(
-                      title: "Creative \nVideo Editor",
-                      jobText: "30+ Jobs Available",
+                      title: 'Creative \nVideo Editor',
+                      jobText: '30+ Jobs Available',
                       backgroundImage: Images.vectorImage,
                       mainImage: Images.cameraIcon,
                       arrowIcon: Iconsax.arrow_right_2,
                       onTap: () => Get.toNamed(AppRoutes.jobDetail),
                     ),
                     CardData(
-                      title: "Creative \nVideo Editor",
-                      jobText: "30+ Jobs Available",
+                      title: 'Creative \nVideo Editor',
+                      jobText: '30+ Jobs Available',
                       backgroundImage: Images.vectorImage,
                       mainImage: Images.cameraIcon,
                       arrowIcon: Iconsax.arrow_right_2,
@@ -85,8 +102,8 @@ class HomeScreen extends StatelessWidget {
 
                 // Label Between - Latest Jobs
                 LabelBetween(
-                  title: "Latest Jobs",
-                  buttonText: "See More",
+                  title: 'latest_jobs'.tr,
+                  buttonText: 'see_more'.tr,
                   onPressed: () {},
                 ),
                 SizedBox(height: responsive.defaultPadding() / 2),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_app/cores/utils/constants/colors.dart';
+import 'package:job_app/cores/utils/constants/ui_constants.dart';
 
 class ButtonWidget extends StatelessWidget {
   final double width, height;
@@ -27,7 +28,6 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: height,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -36,7 +36,7 @@ class ButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius),
             side: BorderSide.none,
           ),
-          padding: EdgeInsets.symmetric(vertical: 18),
+          padding: UIConstants.paddingV12,
           elevation: 0,
           splashFactory: NoSplash.splashFactory,
         ),
@@ -46,14 +46,14 @@ class ButtonWidget extends StatelessWidget {
           children: [
             if (isIcon) ...[
               Icon(icon, color: btnTextColor),
-              const SizedBox(width: 10),
+              UIConstants.sizedBoxWidth10,
             ],
             Text(
               btnTitle,
               style: TextStyle(
                 color: btnTextColor,
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 16,
               ),
             ),
           ],

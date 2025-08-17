@@ -26,26 +26,26 @@ class LoginWidget extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {},
-              child: SocialMediaIcon(iconPath: Images.facebookIcon),
+              child: const SocialMediaIcon(iconPath: Images.facebookIcon),
             ),
             const SizedBox(width: Sizes.spaceBtwInputFields),
             GestureDetector(
               onTap: () {},
-              child: SocialMediaIcon(iconPath: Images.googleIcon),
+              child: const SocialMediaIcon(iconPath: Images.googleIcon),
             ),
           ],
         ),
 
         const SizedBox(height: Sizes.spaceBtwItems),
-        SizedBox(
+        const SizedBox(
           width: 200,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(child: Divider(color: Colors.grey)),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Text("Or", style: TextStyle(color: Colors.grey)),
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Text('Or', style: TextStyle(color: Colors.grey)),
               ),
               Expanded(child: Divider(color: Colors.grey)),
             ],
@@ -57,7 +57,7 @@ class LoginWidget extends StatelessWidget {
           child: Column(
             children: [
               FormFieldWidget(
-                textTitle: "Email",
+                textTitle: 'Email',
                 formField: Obx(
                   () => TextFormFieldWidget(
                     controller: controller.emailController,
@@ -68,7 +68,7 @@ class LoginWidget extends StatelessWidget {
               ),
 
               FormFieldWidget(
-                textTitle: "Password",
+                textTitle: 'Password',
                 formField: Obx(
                   () => TextFormFieldWidget(
                     controller: controller.passwordController,
@@ -99,16 +99,16 @@ class LoginWidget extends StatelessWidget {
                           activeColor: AppColors.boldPrimary,
                         ),
                       ),
-                      Text(
-                        "Remember me",
+                      const Text(
+                        'Remember me',
                         style: TextStyle(color: AppColors.boldPrimary),
                       ),
                     ],
                   ),
                   TextButton(
                     onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
-                    child: Text(
-                      "Forgot Password",
+                    child: const Text(
+                      'Forgot Password',
                       style: TextStyle(color: AppColors.boldPrimary),
                     ),
                   ),
@@ -120,7 +120,7 @@ class LoginWidget extends StatelessWidget {
               ButtonWidget(
                 width: double.infinity,
                 onPressed: () => controller.login(),
-                btnTitle: "Login",
+                btnTitle: 'Login',
               ),
             ],
           ),

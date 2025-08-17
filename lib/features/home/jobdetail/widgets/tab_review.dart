@@ -8,7 +8,7 @@ class TabReview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ReviewBox(
@@ -18,7 +18,7 @@ class TabReview extends StatelessWidget {
           reviewText:
               'Great place to work! The team is supportive and the projects are challenging.',
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10),
         ReviewBox(
           username: 'Jane Smith',
           userRole: 'Product Manager',
@@ -91,7 +91,7 @@ class ReviewBox extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Iconsax.star5,
                                 color: Colors.amber,
                                 size: 20,
@@ -108,8 +108,8 @@ class ReviewBox extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'Review: ',
                   style: TextStyle(
                     color: AppColors.black,

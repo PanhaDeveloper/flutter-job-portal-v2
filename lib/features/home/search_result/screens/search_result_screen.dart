@@ -15,22 +15,22 @@ class SearchResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(SearchResultController());
     return Scaffold(
-      appBar: AppBarWidget(title: 'Search Results'),
+      appBar: const AppBarWidget(title: 'Search Results'),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              LabelBetween(
-                title: "Technology",
-                buttonText: "12 Jobs Available",
+              const LabelBetween(
+                title: 'Technology',
+                buttonText: '12 Jobs Available',
               ),
               const SizedBox(height: 10),
               Row(
                 children: [
                   Obx(
                     () => TabAuth(
-                      text: "Most Recently",
+                      text: 'Most Recently',
                       color:
                           controller.selectedIndex.value == 0
                               ? AppColors.boldPrimary
@@ -50,7 +50,7 @@ class SearchResultScreen extends StatelessWidget {
                   const SizedBox(width: 10),
                   Obx(
                     () => TabAuth(
-                      text: "Most Popular",
+                      text: 'Most Popular',
                       color:
                           controller.selectedIndex.value == 1
                               ? AppColors.boldPrimary

@@ -22,7 +22,7 @@ class CustomNavigate extends StatelessWidget {
     return GestureDetector(
       onTap: onTab,
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         padding: EdgeInsets.symmetric(
           vertical: 5,
           horizontal: isSelected ? 15 : 0,
@@ -35,10 +35,10 @@ class CustomNavigate extends StatelessWidget {
           children: [
             Icon(iconPath, color: isSelected ? Colors.white : Colors.grey),
             if (isSelected) ...[
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Text(
                 label,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,

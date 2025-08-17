@@ -11,7 +11,7 @@ class ChangePasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(title: 'Change Password'),
+      appBar: const AppBarWidget(title: 'Change Password'),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -16,8 +16,8 @@ class OtpScreen extends StatelessWidget {
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Confirm OTP",
+            const Text(
+              'Confirm OTP',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
@@ -25,8 +25,8 @@ class OtpScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
-            Text(
-              "Please enter your 6 digit codes that we’ve sent to \nyour email.",
+            const Text(
+              'Please enter your 6 digit codes that we’ve sent to \nyour email.',
               style: TextStyle(color: AppColors.textSecondary, height: 1.6),
             ),
             const SizedBox(height: 20),
@@ -39,13 +39,13 @@ class OtpScreen extends StatelessWidget {
                 defaultPinTheme: PinTheme(
                   width: 50,
                   height: 50,
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
-                    color: const Color.fromARGB(255, 83, 83, 83),
+                    color: Color.fromARGB(255, 83, 83, 83),
                   ),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(247, 249, 244, 244),
+                    color: const Color.fromARGB(247, 249, 244, 244),
                     borderRadius: BorderRadius.circular(50),
                   ),
                 ),
@@ -55,7 +55,7 @@ class OtpScreen extends StatelessWidget {
             ButtonWidget(
               width: double.infinity,
               onPressed: () => AuthController.instance.confirmOtp(),
-              btnTitle: "Confirm OTP",
+              btnTitle: 'Confirm OTP',
             ),
           ],
         ),

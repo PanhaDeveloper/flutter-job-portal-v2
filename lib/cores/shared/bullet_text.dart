@@ -9,7 +9,7 @@ class BulletText extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("• ", style: TextStyle(fontSize: 14, height: 1.4)), // bullet
+        const Text('• ', style: TextStyle(fontSize: 14, height: 1.4)), // bullet
         Expanded(
           child: Text(text, style: const TextStyle(fontSize: 14, height: 1.4)),
         ),

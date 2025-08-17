@@ -16,7 +16,7 @@ class PersonalProfileScreen extends StatelessWidget {
     final controller = Get.put(PersonalProfileController());
 
     return Scaffold(
-      appBar: AppBarWidget(title: 'Personal Profile'),
+      appBar: const AppBarWidget(title: 'Personal Profile'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Form(

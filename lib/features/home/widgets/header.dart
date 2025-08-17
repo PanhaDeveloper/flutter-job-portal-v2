@@ -1,10 +1,10 @@
-import "package:flutter/material.dart";
-import "package:get/get.dart";
-import "package:iconsax/iconsax.dart";
-import "package:job_app/cores/utils/constants/colors.dart";
-import "package:job_app/cores/utils/constants/image_strings.dart";
-import "package:job_app/features/home/controller/home_controller.dart";
-import "package:job_app/routes/app_routes.dart";
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
+import 'package:job_app/cores/utils/constants/ui_constants.dart';
+import 'package:job_app/features/home/controller/home_controller.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});
@@ -26,27 +26,17 @@ class HeaderWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(width: 10),
+            UIConstants.sizedBoxWidth10,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Good Morning",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppColors.textSecondary,
-                  ),
+                  'good_morning'.tr,
+                  style: UIConstants.textStyle14Secondary,
                 ),
-                SizedBox(height: 2),
-                Text(
-                  "Username",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black,
-                  ),
-                ),
+                UIConstants.sizedBoxHeight2,
+                const Text('Username', style: UIConstants.textStyle18BoldBlack),
               ],
             ),
           ],
@@ -63,13 +53,13 @@ class HeaderWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          "Select Language",
-                          style: TextStyle(
+                          'select_language'.tr,
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -80,7 +70,7 @@ class HeaderWidget extends StatelessWidget {
                             width: 24,
                             height: 24,
                           ),
-                          title: Text("Khmer"),
+                          title: Text('km'.tr),
                           onTap: () {
                             HomeController.instance.changeLocale(
                               const Locale('km', 'KH'),
@@ -94,7 +84,7 @@ class HeaderWidget extends StatelessWidget {
                             width: 24,
                             height: 24,
                           ),
-                          title: Text("English"),
+                          title: Text('en'.tr),
                           onTap: () {
                             HomeController.instance.changeLocale(
                               const Locale('en', 'US'),
@@ -114,11 +104,11 @@ class HeaderWidget extends StatelessWidget {
                 return Image.asset(flagImage, width: 24, height: 24);
               }),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Stack(
               children: [
                 InkWell(
-                  child: Icon(
+                  child: const Icon(
                     Iconsax.notification,
                     size: 28,
                     color: Colors.black54,
@@ -131,7 +121,7 @@ class HeaderWidget extends StatelessWidget {
                   child: Container(
                     width: 10,
                     height: 10,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.red,
                       shape: BoxShape.circle,
                     ),

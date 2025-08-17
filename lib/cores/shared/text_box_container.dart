@@ -28,7 +28,7 @@ class TextBoxContainer extends StatelessWidget {
           children: [
             Text(
               textTitle,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: AppColors.black,

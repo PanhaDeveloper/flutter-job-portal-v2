@@ -35,7 +35,7 @@ class AuthSuccessWidget extends StatelessWidget {
                 ),
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
                     color: Colors.white,
@@ -46,7 +46,7 @@ class AuthSuccessWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     desc,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xECECECEC),
                       fontSize: 16,
                       height: 1.5,
@@ -60,7 +60,7 @@ class AuthSuccessWidget extends StatelessWidget {
           ButtonWidget(
             width: 180,
             onPressed: onPressed,
-            btnTitle: "Close",
+            btnTitle: 'Close',
             btnBgColor: AppColors.white,
             btnTextColor: AppColors.boldPrimary,
           ),

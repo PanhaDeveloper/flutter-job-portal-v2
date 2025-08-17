@@ -7,6 +7,9 @@ import 'package:job_app/features/auth/screen/otp_screen.dart';
 import 'package:job_app/features/auth/screen/reset_password_screen.dart';
 import 'package:job_app/features/home/accounts/screens/change_password_screen.dart';
 import 'package:job_app/features/home/accounts/screens/personal_profile_screen.dart';
+import 'package:job_app/features/home/applynow/binding/apply_now_bindig.dart';
+import 'package:job_app/features/home/applynow/screens/apply_now_screen.dart';
+import 'package:job_app/features/home/applynow/screens/preview_pdf_screen.dart';
 import 'package:job_app/features/home/fav/screens/favorite_screen.dart';
 import 'package:job_app/features/home/jobdetail/binding/job_detail_binding.dart';
 import 'package:job_app/features/home/jobdetail/screens/job_detail_screen.dart';
@@ -21,49 +24,67 @@ import 'package:job_app/routes/app_routes.dart';
 final appPages = [
   GetPage(
     name: AppRoutes.splash,
-    page: () => SplashScreen(),
+    page: () => const SplashScreen(),
     binding: SplashBinding(),
   ),
   GetPage(
     name: AppRoutes.onboarding,
-    page: () => OnBoardingScreen(),
+    page: () => const OnBoardingScreen(),
     binding: OnboardingBinding(),
   ),
   GetPage(
     name: AppRoutes.auth,
-    page: () => AuthScreen(),
+    page: () => const AuthScreen(),
     binding: AuthBinding(),
   ),
 
   GetPage(
     name: AppRoutes.forgotPassword,
-    page: () => ForgotPasswordScreen(),
+    page: () => const ForgotPasswordScreen(),
     binding: AuthBinding(),
   ),
 
   GetPage(
     name: AppRoutes.resetPassword,
-    page: () => ResetPasswordScreen(),
+    page: () => const ResetPasswordScreen(),
     binding: AuthBinding(),
   ),
 
-  GetPage(name: AppRoutes.otp, page: () => OtpScreen(), binding: AuthBinding()),
+  GetPage(
+    name: AppRoutes.otp,
+    page: () => const OtpScreen(),
+    binding: AuthBinding(),
+  ),
 
-  GetPage(name: AppRoutes.authSuccess, page: () => AuthSuccessScreen()),
+  GetPage(name: AppRoutes.authSuccess, page: () => const AuthSuccessScreen()),
 
-  GetPage(name: AppRoutes.home, page: () => AppNavigateBar()),
+  GetPage(name: AppRoutes.home, page: () => const AppNavigateBar()),
 
-  GetPage(name: AppRoutes.personalProfile, page: () => PersonalProfileScreen()),
+  GetPage(
+    name: AppRoutes.personalProfile,
+    page: () => const PersonalProfileScreen(),
+  ),
 
-  GetPage(name: AppRoutes.notification, page: () => NotificationScreen()),
+  GetPage(name: AppRoutes.notification, page: () => const NotificationScreen()),
 
-  GetPage(name: AppRoutes.changePassword, page: () => ChangePasswordScreen()),
+  GetPage(
+    name: AppRoutes.changePassword,
+    page: () => const ChangePasswordScreen(),
+  ),
 
-  GetPage(name: AppRoutes.favoriteJobs, page: () => FavoriteScreen()),
+  GetPage(name: AppRoutes.favoriteJobs, page: () => const FavoriteScreen()),
 
   GetPage(
     name: AppRoutes.jobDetail,
-    page: () => JobDetailScreen(),
+    page: () => const JobDetailScreen(),
     binding: JobDetailBinding(),
   ),
+
+  GetPage(
+    name: AppRoutes.applyNow,
+    page: () => const ApplyNowScreen(),
+    binding: ApplyNowBinding(),
+  ),
+
+  GetPage(name: AppRoutes.previewPdf, page: () => PreviewPdfScreen()),
 ];

@@ -13,4 +13,6 @@ class AppRoutes {
   static const String favoriteJobs = '/favorite-jobs';
   static const String jobDetail = '/job-detail';
   static const String jobApply = '/job-apply';
+  static const String applyNow = '/apply-now';
+  static const String previewPdf = '/preview-pdf';
 }

@@ -12,8 +12,8 @@ class AuthSuccessScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.boldPrimary,
       body: AuthSuccessWidget(
-        title: "Register Successful!",
-        desc: "You have successfully registered. Enjoy your time with us.",
+        title: 'Register Successful!',
+        desc: 'You have successfully registered. Enjoy your time with us.',
         onPressed: () {
           Get.offAllNamed(AppRoutes.home);
         },

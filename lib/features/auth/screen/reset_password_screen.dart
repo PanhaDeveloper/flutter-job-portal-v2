@@ -26,8 +26,8 @@ class ResetPasswordScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Reset Password",
+              const Text(
+                'Reset Password',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
@@ -35,13 +35,13 @@ class ResetPasswordScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 5),
-              Text(
-                "Please reset your password, make sure your new \npassword is not the same as your old password.",
+              const Text(
+                'Please reset your password, make sure your new \npassword is not the same as your old password.',
                 style: TextStyle(color: AppColors.textSecondary, height: 1.6),
               ),
 
               FormFieldWidget(
-                textTitle: "Password",
+                textTitle: 'Password',
                 formField: Obx(
                   () => TextFormFieldWidget(
                     controller: controller.passwordController,
@@ -59,7 +59,7 @@ class ResetPasswordScreen extends StatelessWidget {
               ),
 
               FormFieldWidget(
-                textTitle: "Confirm Password",
+                textTitle: 'Confirm Password',
                 formField: Obx(
                   () => TextFormFieldWidget(
                     controller: controller.confirmPasswordController,
@@ -79,7 +79,7 @@ class ResetPasswordScreen extends StatelessWidget {
               ButtonWidget(
                 width: double.infinity,
                 onPressed: () => controller.resetPassword(),
-                btnTitle: "Reset Password",
+                btnTitle: 'Reset Password',
               ),
             ],
           ),

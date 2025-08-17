@@ -1,13 +1,13 @@
-import "package:flutter/material.dart";
-import "package:job_app/cores/shared/app_bar_widget.dart";
-import "package:job_app/features/home/notification/widget/notification_card.dart";
+import 'package:flutter/material.dart';
+import 'package:job_app/cores/shared/app_bar_widget.dart';
+import 'package:job_app/features/home/notification/widget/notification_card.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: AppBarWidget(title: 'Notifications'),
       body: Padding(
         padding: EdgeInsets.only(top: 10.0),

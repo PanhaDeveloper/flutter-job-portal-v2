@@ -23,10 +23,10 @@ class AccountScreen extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.only(top: 25),
                 child: Text(
-                  "Account & Settings",
-                  style: TextStyle(
+                  'account_settings'.tr,
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
@@ -36,7 +36,7 @@ class AccountScreen extends StatelessWidget {
 
               // ------ Profile Info Section ------
               const SizedBox(height: 16),
-              ProfileInfo(),
+              const ProfileInfo(),
 
               // ------ Stats Section ------
               const SizedBox(height: 16),
@@ -47,7 +47,7 @@ class AccountScreen extends StatelessWidget {
                   color: const Color(0xFFF7F7F7),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

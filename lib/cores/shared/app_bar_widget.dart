@@ -20,7 +20,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading:
           isLeading
-              ? GestureDetector(onTap: () => Get.back(), child: AppBarIcon())
+              ? GestureDetector(onTap: () => Get.back(), child: const AppBarIcon())
               : null,
       title: Text(
         title,

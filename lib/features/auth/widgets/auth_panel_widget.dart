@@ -27,7 +27,7 @@ class AuthPanelWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Khmer Career",
+                'Khmer Career',
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -36,7 +36,7 @@ class AuthPanelWidget extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               Text(
-                "From dream to career!",
+                'From dream to career!',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontSize: 18,
                   color: AppColors.textWhite,

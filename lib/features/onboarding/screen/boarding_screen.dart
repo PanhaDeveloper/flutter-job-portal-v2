@@ -11,7 +11,7 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final onboarding = Data.onBoardingData;
+    const onboarding = Data.onBoardingData;
     final controller = OnboardingController.instance;
 
     return Scaffold(
@@ -27,7 +27,7 @@ class OnBoardingScreen extends StatelessWidget {
                   child: Obx(
                     () => Text(
                       controller.skipText.value,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.boldPrimary,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
@@ -45,9 +45,9 @@ class OnBoardingScreen extends StatelessWidget {
               itemCount: onboarding.length,
               itemBuilder: (context, index) {
                 return OnboardingWidget(
-                  image: onboarding[index]["image"]!,
-                  title: onboarding[index]["title"]!,
-                  description: onboarding[index]["description"]!,
+                  image: onboarding[index]['image']!,
+                  title: onboarding[index]['title']!,
+                  description: onboarding[index]['description']!,
                 );
               },
             ),

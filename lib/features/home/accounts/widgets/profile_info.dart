@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:job_app/cores/utils/constants/image_strings.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({super.key});
@@ -26,7 +25,7 @@ class ProfileInfo extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
-                  child: Icon(Icons.person, size: 40, color: Color(0xFF4A90E2)),
+                  child: const Icon(Icons.person, size: 40, color: Color(0xFF4A90E2)),
                 ),
               ),
               Positioned(
@@ -45,10 +44,10 @@ class ProfileInfo extends StatelessWidget {
             ],
           ),
           const SizedBox(width: 12),
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Ponhakol',
                 style: TextStyle(
                   color: Colors.white,
@@ -57,7 +56,7 @@ class ProfileInfo extends StatelessWidget {
                 ),
               ),
               // Email
-              const Text(
+              Text(
                 'ponhakol@gmail.com',
                 style: TextStyle(color: Colors.white70, fontSize: 14),
               ),

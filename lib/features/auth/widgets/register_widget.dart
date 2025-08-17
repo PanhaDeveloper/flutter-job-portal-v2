@@ -21,7 +21,7 @@ class RegisterWidget extends StatelessWidget {
       child: Column(
         children: [
           FormFieldWidget(
-            textTitle: "Email",
+            textTitle: 'Email',
             formField: Obx(
               () => TextFormFieldWidget(
                 controller: controller.emailController,
@@ -32,7 +32,7 @@ class RegisterWidget extends StatelessWidget {
           ),
 
           FormFieldWidget(
-            textTitle: "Password",
+            textTitle: 'Password',
             formField: Obx(
               () => TextFormFieldWidget(
                 controller: controller.passwordController,
@@ -50,7 +50,7 @@ class RegisterWidget extends StatelessWidget {
           ),
 
           FormFieldWidget(
-            textTitle: "Confirm Password",
+            textTitle: 'Confirm Password',
             formField: Obx(
               () => TextFormFieldWidget(
                 controller: controller.confirmPasswordController,
@@ -71,8 +71,8 @@ class RegisterWidget extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: () => controller.changeTab(AuthTab.login),
-              child: Text(
-                "Already have an account?",
+              child: const Text(
+                'Already have an account?',
                 style: TextStyle(color: AppColors.boldPrimary, fontSize: 12),
               ),
             ),
@@ -83,7 +83,7 @@ class RegisterWidget extends StatelessWidget {
           ButtonWidget(
             width: double.infinity,
             onPressed: () => controller.register(),
-            btnTitle: "Register",
+            btnTitle: 'Register',
           ),
         ],
       ),

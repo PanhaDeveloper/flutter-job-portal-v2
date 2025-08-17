@@ -6,13 +6,13 @@ class OnboardingController extends GetxController {
   static OnboardingController get instance => Get.find();
 
   final RxInt currentIndex = 0.obs;
-  final RxString skipText = "Skip".obs;
+  final RxString skipText = 'Skip'.obs;
 
   final PageController pageController = PageController();
 
   void onPageChanged(int index) {
     currentIndex.value = index;
-    skipText.value = index == 2 ? "Finish" : "Skip";
+    skipText.value = index == 2 ? 'Finish' : 'Skip';
   }
 
   void dotNavigationClick(int index) {
@@ -24,7 +24,7 @@ class OnboardingController extends GetxController {
   }
 
   void skipOnBoarding() {
-    if (skipText.value == "Finish") {
+    if (skipText.value == 'Finish') {
       Get.offNamed(AppRoutes.auth);
     } else {
       currentIndex.value = 2;
