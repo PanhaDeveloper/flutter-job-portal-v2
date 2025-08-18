@@ -20,7 +20,7 @@ class App extends StatelessWidget {
       transitionDuration: const Duration(milliseconds: 250),
 
       // Theme configuration
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
 

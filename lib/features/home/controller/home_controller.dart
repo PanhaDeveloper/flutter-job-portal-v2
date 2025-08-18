@@ -12,6 +12,11 @@ class HomeController extends GetxController {
   final locale = const Locale('en', 'US').obs;
   final storage = GetStorage();
 
+  // Loading states for different sections
+  final isLoadingSlider = true.obs;
+  final isLoadingJobs = true.obs;
+  final isLoadingProfile = true.obs;
+
   var jobLocation = 'Phnom Penh, Cambodia'.obs;
   var workInterest = 'Graphic & Design'.obs;
   var selectedRoles = <String>[].obs;
@@ -36,6 +41,33 @@ class HomeController extends GetxController {
       final parts = savedLocale.split('_'); // "en_US" => ['en', 'US']
       locale.value = Locale(parts[0], parts[1]);
     }
+
+    // Simulate loading data
+    _loadInitialData();
+  }
+
+  /// Simulates loading initial data with delays to show shimmer effects
+  Future<void> _loadInitialData() async {
+    // Simulate profile loading (fastest)
+    await Future.delayed(const Duration(milliseconds: 800));
+    isLoadingProfile.value = false;
+
+    // Simulate slider data loading
+    await Future.delayed(const Duration(milliseconds: 500));
+    isLoadingSlider.value = false;
+
+    // Simulate jobs data loading (slowest)
+    await Future.delayed(const Duration(milliseconds: 1200));
+    isLoadingJobs.value = false;
+  }
+
+  /// Method to refresh all data
+  Future<void> refreshData() async {
+    isLoadingSlider.value = true;
+    isLoadingJobs.value = true;
+    isLoadingProfile.value = true;
+
+    await _loadInitialData();
   }
 
   void changeLocale(Locale newLocale) {

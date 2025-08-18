@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/rendering.dart';
@@ -6,6 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:job_app/app.dart';
 import 'package:job_app/cores/utils/performance/performance_monitor.dart';
 import 'package:job_app/cores/utils/performance/performance_config.dart';
+import 'package:job_app/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +35,9 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  // Initialize Firebase
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // Initialize storage
   await GetStorage.init();

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "341022674099",
+    "project_id": "laravel-ea7a9",
+    "storage_bucket": "laravel-ea7a9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341022674099:android:ec0427af195d366e3474c6",
+        "android_client_info": {
+          "package_name": "com.example.job_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341022674099-1egfsvkfo2nqhsafler5tegkoifijg23.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.job_app",
+            "certificate_hash": "0a844bb438b113945a9ef02eb583629c7c3ad434"
+          }
+        },
+        {
+          "client_id": "341022674099-rtmp20761d803eal964kr3onepgf7dm1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1-7_04gC2Ya4vNJiQvoP-YPEJVy0nI2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341022674099-rtmp20761d803eal964kr3onepgf7dm1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "341022674099-rr4a0v2c8f7fg129kooellm23cff1a3j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.quizApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
