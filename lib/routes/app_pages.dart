@@ -8,6 +8,7 @@ import 'package:job_app/features/auth/screen/reset_password_screen.dart';
 import 'package:job_app/features/home/accounts/binding/change_password_binding.dart';
 import 'package:job_app/features/home/accounts/screens/change_password_screen.dart';
 import 'package:job_app/features/home/accounts/screens/personal_profile_screen.dart';
+import 'package:job_app/features/home/accounts/screens/settings_screen.dart';
 import 'package:job_app/features/home/applynow/binding/apply_now_bindig.dart';
 import 'package:job_app/features/home/applynow/screens/apply_now_screen.dart';
 import 'package:job_app/features/home/applynow/screens/preview_pdf_screen.dart';
@@ -75,6 +76,11 @@ final appPages = [
     name: AppRoutes.changePassword,
     page: () => const ChangePasswordScreen(),
     binding: ChangePasswordBinding(),
+  ),
+
+  GetPage(
+    name: AppRoutes.settings,
+    page: () => const SettingsScreen(),
   ),
 
   GetPage(name: AppRoutes.favoriteJobs, page: () => const FavoriteScreen()),

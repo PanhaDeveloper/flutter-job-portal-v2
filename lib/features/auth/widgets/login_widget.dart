@@ -30,7 +30,7 @@ class LoginWidget extends StatelessWidget {
             ),
             const SizedBox(width: Sizes.spaceBtwInputFields),
             GestureDetector(
-              onTap: () {},
+              onTap: () => controller.googleSignIn(),
               child: const SocialMediaIcon(iconPath: Images.googleIcon),
             ),
           ],
@@ -117,10 +117,16 @@ class LoginWidget extends StatelessWidget {
 
               const SizedBox(height: Sizes.spaceBtwItems),
 
-              ButtonWidget(
-                width: double.infinity,
-                onPressed: () => controller.login(),
-                btnTitle: 'Login',
+              Obx(
+                () => ButtonWidget(
+                  width: double.infinity,
+                  onPressed: () {
+                    if (!controller.isLoading.value) {
+                      controller.login();
+                    }
+                  },
+                  btnTitle: controller.isLoading.value ? 'Signing In...' : 'Login',
+                ),
               ),
             ],
           ),

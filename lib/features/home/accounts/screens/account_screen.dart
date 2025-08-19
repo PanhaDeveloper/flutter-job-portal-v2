@@ -84,7 +84,7 @@ class AccountScreen extends StatelessWidget {
               MenuItem(
                 icon: Iconsax.setting_2,
                 title: 'settings'.tr,
-                onTap: () {},
+                onTap: () => Get.toNamed(AppRoutes.settings),
               ),
 
               // -------- Logout Button --------

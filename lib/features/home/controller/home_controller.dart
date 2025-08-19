@@ -2,7 +2,11 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:job_app/cores/data/models/user_model.dart';
+import 'package:job_app/cores/data/repositories/authentication/authentication_repository.dart';
 import 'package:job_app/cores/utils/constants/image_strings.dart';
+import 'package:job_app/cores/utils/popups/loaders.dart';
+import 'package:job_app/features/personalization/controllers/user_controller.dart';
 
 class HomeController extends GetxController {
   static HomeController get instance => Get.find();
@@ -151,5 +155,27 @@ class HomeController extends GetxController {
 
   void updateJobCategoryIndex(int index) {
     jobCategoryIndex.value = index;
+  }
+
+  Future<void> logout() async {
+    try {
+      await AuthenticationRepository.instance.logout();
+      
+      // Clear user data from UserController
+      if (Get.isRegistered<UserController>()) {
+        final userController = Get.find<UserController>();
+        userController.user(UserModel.empty());
+      }
+      
+      Loaders.successSnackBar(
+        title: 'Success',
+        message: 'You have been logged out successfully.',
+      );
+    } catch (e) {
+      Loaders.errorSnackBar(
+        title: 'Error',
+        message: e.toString(),
+      );
+    }
   }
 }

@@ -20,6 +20,32 @@ class RegisterWidget extends StatelessWidget {
       key: controller.registerFormKey,
       child: Column(
         children: [
+          Row(
+            children: [
+              Expanded(
+                child: FormFieldWidget(
+                  textTitle: 'First Name',
+                  formField: TextFormFieldWidget(
+                    controller: controller.firstNameController,
+                    validator: (value) => Validator.validateEmptyString(value),
+                    hintText: 'John',
+                  ),
+                ),
+              ),
+              const SizedBox(width: Sizes.spaceBtwInputFields),
+              Expanded(
+                child: FormFieldWidget(
+                  textTitle: 'Last Name',
+                  formField: TextFormFieldWidget(
+                    controller: controller.lastNameController,
+                    validator: (value) => Validator.validateEmptyString(value),
+                    hintText: 'Doe',
+                  ),
+                ),
+              ),
+            ],
+          ),
+
           FormFieldWidget(
             textTitle: 'Email',
             formField: Obx(
@@ -80,10 +106,16 @@ class RegisterWidget extends StatelessWidget {
 
           const SizedBox(height: Sizes.sm),
 
-          ButtonWidget(
-            width: double.infinity,
-            onPressed: () => controller.register(),
-            btnTitle: 'Register',
+          Obx(
+            () => ButtonWidget(
+              width: double.infinity,
+              onPressed: () {
+                if (!controller.isLoading.value) {
+                  controller.register();
+                }
+              },
+              btnTitle: controller.isLoading.value ? 'Creating Account...' : 'Register',
+            ),
           ),
         ],
       ),
