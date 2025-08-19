@@ -1,57 +1,75 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:job_app/cores/utils/exceptions/firebase_auth_exceptions.dart' as auth_exceptions;
-import 'package:job_app/cores/utils/exceptions/firebase_exceptions.dart' as firebase_exceptions;
-import 'package:job_app/cores/utils/exceptions/format_exceptions.dart' as format_exceptions;
+import 'package:job_app/cores/utils/exceptions/firebase_auth_exceptions.dart'
+    as auth_exceptions;
+import 'package:job_app/cores/utils/exceptions/firebase_exceptions.dart'
+    as firebase_exceptions;
+import 'package:job_app/cores/utils/exceptions/format_exceptions.dart'
+    as format_exceptions;
 import 'package:job_app/features/auth/screen/auth_screen.dart';
+import 'package:job_app/features/auth/screen/verify_screen.dart';
+import 'package:job_app/features/onboarding/screen/boarding_screen.dart';
 import 'package:job_app/features/personalization/controllers/user_controller.dart';
 import 'package:job_app/routes/app_routes.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
-  /// Variables
   final _auth = FirebaseAuth.instance;
   final _googleSignIn = GoogleSignIn();
 
-  /// Get Authenticated User Data
   User? get authUser => _auth.currentUser;
+  final deviceStorage = GetStorage();
 
-  /// Called from main.dart on app launch
   @override
   void onReady() {
-    // Remove any loader from splash screen
     screenRedirect();
   }
 
-  /// Function to Show Relevant Screen
-  void screenRedirect() async {
+  Future<void> screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
-      // If the user is logged in, initialize user data and navigate to home
-      if (Get.isRegistered<UserController>()) {
-        Get.find<UserController>().fetchUserRecord();
+      // if (Get.isRegistered<UserController>()) {
+      //   Get.find<UserController>().fetchUserRecord();
+      // }
+
+      if (user.emailVerified) {
+        Get.offAllNamed(AppRoutes.home);
+      } else {
+        Get.offAll(() => VerifyEmailScreen(email: user.email));
       }
-      Get.offAllNamed(AppRoutes.home);
     } else {
-      // If user is not logged in, redirect to authentication screen
-      Get.offAll(() => const AuthScreen());
+      print('================= GET STORAGE AUTH REPO ===============');
+      print(deviceStorage.read('isFirstTime'));
+
+      deviceStorage.writeIfNull('isFirstTime', true);
+      deviceStorage.read('isFirstTime') != true
+          ? Get.offAll(() => AuthScreen())
+          : Get.offAll(() => const OnBoardingScreen());
     }
   }
 
   /*------------ Email & Password sign-in -------------*/
 
   /// [EmailAuthentication] - SignIn
-  Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
+  Future<UserCredential> loginWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
     try {
-      final userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
-      
+      final userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
       // Update user data after login
       if (Get.isRegistered<UserController>()) {
         Get.find<UserController>().fetchUserRecord();
       }
-      
+
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw auth_exceptions.FirebaseAuthException(e.code).message;
@@ -65,9 +83,15 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [EmailAuthentication] - REGISTER
-  Future<UserCredential> registerWithEmailAndPassword(String email, String password) async {
+  Future<UserCredential> registerWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
     try {
-      return await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      return await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
     } on FirebaseAuthException catch (e) {
       throw auth_exceptions.FirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -110,10 +134,16 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [ReAuthenticate] - ReAuthenticate User
-  Future<void> reAuthenticateWithEmailAndPassword(String email, String password) async {
+  Future<void> reAuthenticateWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
     try {
       // Create a credential
-      AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      );
 
       // ReAuthenticate
       await _auth.currentUser!.reauthenticateWithCredential(credential);
@@ -137,7 +167,8 @@ class AuthenticationRepository extends GetxController {
       final GoogleSignInAccount? userAccount = await _googleSignIn.signIn();
 
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth = await userAccount?.authentication;
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
 
       // Create a new credential
       final credentials = GoogleAuthProvider.credential(
@@ -146,7 +177,9 @@ class AuthenticationRepository extends GetxController {
       );
 
       // Once signed in, return the UserCredential
-      final UserCredential userCredential = await _auth.signInWithCredential(credentials);
+      final UserCredential userCredential = await _auth.signInWithCredential(
+        credentials,
+      );
 
       // Save user data using UserController if this is a new user or fetch existing data
       if (Get.isRegistered<UserController>()) {
@@ -174,7 +207,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await _googleSignIn.signOut();
       await _auth.signOut();
-      Get.offAll(() => const AuthScreen());
+      Get.offAll(() => AuthScreen());
     } on FirebaseAuthException catch (e) {
       throw auth_exceptions.FirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

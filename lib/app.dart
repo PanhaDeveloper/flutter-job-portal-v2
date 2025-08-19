@@ -31,7 +31,7 @@ class App extends StatelessWidget {
 
       // Navigation configuration
       initialBinding: GeneralBinding(),
-      initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.checkScreen,
       getPages: appPages,
 
       // Localization

@@ -21,6 +21,7 @@ import 'package:job_app/features/network/binding/no_internet_binding.dart';
 import 'package:job_app/features/network/screens/no_internet_screen.dart';
 import 'package:job_app/features/onboarding/binding/onboarding_binding.dart';
 import 'package:job_app/features/splash/binding/splash_binding.dart';
+import 'package:job_app/features/splash/screen/check_screen.dart';
 import 'package:job_app/features/splash/screen/splash_screen.dart';
 import 'package:job_app/features/onboarding/screen/boarding_screen.dart';
 import 'package:job_app/features/security/screens/security_setup_screen.dart';
@@ -40,11 +41,7 @@ final appPages = [
     page: () => const OnBoardingScreen(),
     binding: OnboardingBinding(),
   ),
-  GetPage(
-    name: AppRoutes.auth,
-    page: () => const AuthScreen(),
-    binding: AuthBinding(),
-  ),
+  GetPage(name: AppRoutes.auth, page: () => AuthScreen()),
 
   GetPage(
     name: AppRoutes.forgotPassword,
@@ -66,9 +63,11 @@ final appPages = [
 
   GetPage(name: AppRoutes.authSuccess, page: () => const AuthSuccessScreen()),
 
-  GetPage(name: AppRoutes.home, page: () => const AppNavigateBar(), middlewares: [
-    SecurityMiddleware(),
-  ]),
+  GetPage(
+    name: AppRoutes.home,
+    page: () => const AppNavigateBar(),
+    middlewares: [SecurityMiddleware()],
+  ),
 
   GetPage(
     name: AppRoutes.personalProfile,
@@ -77,7 +76,7 @@ final appPages = [
   ),
 
   GetPage(
-    name: AppRoutes.notification, 
+    name: AppRoutes.notification,
     page: () => const NotificationScreen(),
     middlewares: [SecurityMiddleware()],
   ),
@@ -96,7 +95,7 @@ final appPages = [
   ),
 
   GetPage(
-    name: AppRoutes.favoriteJobs, 
+    name: AppRoutes.favoriteJobs,
     page: () => const FavoriteScreen(),
     middlewares: [SecurityMiddleware()],
   ),
@@ -116,13 +115,13 @@ final appPages = [
   ),
 
   GetPage(
-    name: AppRoutes.previewPdf, 
+    name: AppRoutes.previewPdf,
     page: () => PreviewPdfScreen(),
     middlewares: [SecurityMiddleware()],
   ),
 
   GetPage(
-    name: AppRoutes.searchResult, 
+    name: AppRoutes.searchResult,
     page: () => const SearchResultScreen(),
     middlewares: [SecurityMiddleware()],
   ),
@@ -139,8 +138,7 @@ final appPages = [
     middlewares: [SecurityMiddleware()],
   ),
 
-  GetPage(
-    name: AppRoutes.appLock,
-    page: () => const AppLockScreen(),
-  ),
+  GetPage(name: AppRoutes.appLock, page: () => const AppLockScreen()),
+
+  GetPage(name: AppRoutes.checkScreen, page: () => const CheckScreen()),
 ];

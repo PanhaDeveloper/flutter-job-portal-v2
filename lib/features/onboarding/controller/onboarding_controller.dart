@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:job_app/routes/app_routes.dart';
 
 class OnboardingController extends GetxController {
@@ -9,6 +10,7 @@ class OnboardingController extends GetxController {
   final RxString skipText = 'Skip'.obs;
 
   final PageController pageController = PageController();
+  final deviceStorage = GetStorage();
 
   void onPageChanged(int index) {
     currentIndex.value = index;
@@ -25,6 +27,7 @@ class OnboardingController extends GetxController {
 
   void skipOnBoarding() {
     if (skipText.value == 'Finish') {
+      deviceStorage.write('isFirstTime', false);
       Get.offNamed(AppRoutes.auth);
     } else {
       currentIndex.value = 2;

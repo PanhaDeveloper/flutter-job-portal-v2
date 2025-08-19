@@ -8,8 +8,9 @@ import 'package:job_app/features/auth/widgets/tab_auth.dart';
 import 'package:job_app/features/auth/controllers/auth_controller.dart';
 
 class AuthScreen extends StatelessWidget {
-  const AuthScreen({super.key});
-
+  AuthScreen({super.key}) {
+    Get.put(AuthController());
+  }
   @override
   Widget build(BuildContext context) {
     final controller = AuthController.instance;
@@ -64,7 +65,10 @@ class AuthScreen extends StatelessWidget {
             sizeBox: 20,
             content: AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
-              child: controller.isLogin ? const LoginWidget() : const RegisterWidget(),
+              child:
+                  controller.isLogin
+                      ? const LoginWidget()
+                      : const RegisterWidget(),
             ),
           ),
         ),

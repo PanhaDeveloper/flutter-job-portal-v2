@@ -156,26 +156,4 @@ class HomeController extends GetxController {
   void updateJobCategoryIndex(int index) {
     jobCategoryIndex.value = index;
   }
-
-  Future<void> logout() async {
-    try {
-      await AuthenticationRepository.instance.logout();
-      
-      // Clear user data from UserController
-      if (Get.isRegistered<UserController>()) {
-        final userController = Get.find<UserController>();
-        userController.user(UserModel.empty());
-      }
-      
-      Loaders.successSnackBar(
-        title: 'Success',
-        message: 'You have been logged out successfully.',
-      );
-    } catch (e) {
-      Loaders.errorSnackBar(
-        title: 'Error',
-        message: e.toString(),
-      );
-    }
-  }
 }

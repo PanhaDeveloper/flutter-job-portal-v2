@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 import 'package:job_app/cores/data/models/user_model.dart';
 import 'package:job_app/cores/data/repositories/authentication/authentication_repository.dart';
 import 'package:job_app/cores/data/repositories/user/user_repository.dart';
+import 'package:job_app/cores/utils/constants/image_strings.dart';
 import 'package:job_app/cores/utils/helpers/network_manager.dart';
+import 'package:job_app/cores/utils/popups/full_screen_loader.dart';
 import 'package:job_app/cores/utils/popups/loaders.dart';
-import 'package:job_app/features/personalization/controllers/user_controller.dart';
+import 'package:job_app/features/auth/screen/verify_screen.dart';
 import 'package:job_app/routes/app_routes.dart';
 
 enum AuthTab { login, register }
@@ -70,7 +72,10 @@ class AuthController extends GetxController {
       // Navigate to home screen
       Get.offAllNamed(AppRoutes.home);
     } catch (e) {
-      Loaders.errorSnackBar(title: 'Google Sign In Failed', message: e.toString());
+      Loaders.errorSnackBar(
+        title: 'Google Sign In Failed',
+        message: e.toString(),
+      );
     } finally {
       isLoading.value = false;
     }
@@ -90,19 +95,23 @@ class AuthController extends GetxController {
     try {
       isLoading.value = true;
 
-      // Login user using email and password authentication
+      FullScreenLoader.openLoadingDialog(
+        'We are processing your information',
+        Images.authloadingAnimation,
+      );
+
       await authRepository.loginWithEmailAndPassword(
         emailController.text.trim(),
         passwordController.text.trim(),
       );
 
-      // Clear the input fields
       emailController.clear();
       passwordController.clear();
 
       Loaders.successSnackBar(title: 'Success', message: 'Login successful!');
 
-      // Navigate to home or next screen
+      FullScreenLoader.stopLoading();
+
       Get.offAllNamed(AppRoutes.home);
     } catch (e) {
       Loaders.errorSnackBar(title: 'Login Failed', message: e.toString());
@@ -114,7 +123,8 @@ class AuthController extends GetxController {
   Future<void> register() async {
     if (!(registerFormKey.currentState?.validate() ?? false)) return;
 
-    if (!await NetworkManager.instance.isConnected()) {
+    final isConnected = await NetworkManager.instance.isConnected();
+    if (!isConnected) {
       Loaders.errorSnackBar(
         title: 'Network Error',
         message: 'No internet connection.',
@@ -130,6 +140,11 @@ class AuthController extends GetxController {
     try {
       isLoading.value = true;
 
+      FullScreenLoader.openLoadingDialog(
+        'We are processing your information',
+        Images.authloadingAnimation,
+      );
+
       // Register user using email and password authentication
       final userCredential = await authRepository.registerWithEmailAndPassword(
         emailController.text.trim(),
@@ -141,7 +156,9 @@ class AuthController extends GetxController {
         id: userCredential.user!.uid,
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
-        username: UserModel.generateUsername('${firstNameController.text.trim()} ${lastNameController.text.trim()}'),
+        username: UserModel.generateUsername(
+          '${firstNameController.text.trim()} ${lastNameController.text.trim()}',
+        ),
         email: emailController.text.trim(),
         phoneNumber: '',
         profilePicture: '',
@@ -150,12 +167,12 @@ class AuthController extends GetxController {
       await userRepository.saveUserRecord(newUser);
 
       // Update UserController with new user data
-      if (Get.isRegistered<UserController>()) {
-        Get.find<UserController>().fetchUserRecord();
-      }
+      // if (Get.isRegistered<UserController>()) {
+      //   Get.find<UserController>().fetchUserRecord();
+      // }
 
       // Send email verification
-      await authRepository.sendEmailVerification();
+      // await authRepository.sendEmailVerification();
 
       // Clear the input fields
       firstNameController.clear();
@@ -166,13 +183,19 @@ class AuthController extends GetxController {
 
       Loaders.successSnackBar(
         title: 'Success',
-        message: 'Registration successful! Please verify your email to complete the process.',
+        message:
+            'Registration successful! Please verify your email to complete the process.',
       );
 
+      FullScreenLoader.stopLoading();
+
       // Navigate to email verification screen
-      Get.offAllNamed(AppRoutes.otp);
+      Get.to(() => VerifyEmailScreen(email: emailController.text.trim()));
     } catch (e) {
-      Loaders.errorSnackBar(title: 'Registration Failed', message: e.toString());
+      Loaders.errorSnackBar(
+        title: 'Registration Failed',
+        message: e.toString(),
+      );
     } finally {
       isLoading.value = false;
     }
@@ -191,6 +214,10 @@ class AuthController extends GetxController {
 
     try {
       isLoading.value = true;
+      FullScreenLoader.openLoadingDialog(
+        'We are processing your information',
+        Images.authloadingAnimation,
+      );
 
       // Send password reset email
       await authRepository.sendPasswordResetEmail(emailController.text.trim());
@@ -204,8 +231,8 @@ class AuthController extends GetxController {
       emailController.clear();
 
       // Navigate back to login screen
+      FullScreenLoader.stopLoading();
       Get.back();
-
     } catch (e) {
       Loaders.errorSnackBar(title: 'Error', message: e.toString());
     } finally {
@@ -231,7 +258,8 @@ class AuthController extends GetxController {
 
       Loaders.successSnackBar(
         title: 'Email Sent',
-        message: 'Verification email has been sent again. Please check your email.',
+        message:
+            'Verification email has been sent again. Please check your email.',
       );
     } catch (e) {
       Loaders.errorSnackBar(title: 'Error', message: e.toString());
@@ -263,7 +291,8 @@ class AuthController extends GetxController {
       // This is more for demonstration - actual password reset happens through email
       Loaders.successSnackBar(
         title: 'Success',
-        message: 'Password has been reset successfully! Please login with your new password.',
+        message:
+            'Password has been reset successfully! Please login with your new password.',
       );
 
       // Clear fields
@@ -290,10 +319,11 @@ class AuthController extends GetxController {
 
     try {
       Loaders.successSnackBar(
-        title: 'Success', 
-        message: 'Please complete the email verification and try logging in again.',
+        title: 'Success',
+        message:
+            'Please complete the email verification and try logging in again.',
       );
-      
+
       // Navigate back to auth screen
       Get.offAllNamed(AppRoutes.auth);
     } catch (e) {

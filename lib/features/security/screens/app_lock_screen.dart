@@ -51,7 +51,7 @@ class _AppLockScreenState extends State<AppLockScreen> {
                       color: AppColors.primary.withOpacity(0.1),
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.lock,
                       size: 80,
                       color: AppColors.primary,

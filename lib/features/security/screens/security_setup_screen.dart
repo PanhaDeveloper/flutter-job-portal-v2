@@ -212,7 +212,7 @@ class _SecuritySetupScreenState extends State<SecuritySetupScreen> {
           ),
         ),
         trailing: isSelected 
-            ? Icon(Iconsax.tick_circle, color: AppColors.primary)
+            ? const Icon(Iconsax.tick_circle, color: AppColors.primary)
             : Icon(Icons.arrow_forward_ios, color: Colors.grey[400], size: 16),
         onTap: onTap,
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

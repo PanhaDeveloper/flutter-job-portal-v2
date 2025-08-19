@@ -14,7 +14,7 @@ class HeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userController = UserController.instance;
-    
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -23,34 +23,37 @@ class HeaderWidget extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Obx(() => GestureDetector(
-                onTap: () => Get.to(() => const ProfileScreen()),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: userController.user.value.profilePicture.isNotEmpty
-                    ? FadeInImage.assetNetwork(
-                        placeholder: Images.profileImage,
-                        image: userController.user.value.profilePicture,
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                        imageErrorBuilder: (context, error, stackTrace) {
-                          return Image.asset(
-                            Images.profileImage,
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                          );
-                        },
-                      )
-                    : Image.asset(
-                        Images.profileImage,
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      ),
+              Obx(
+                () => GestureDetector(
+                  onTap: () => Get.to(() => const ProfileScreen()),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child:
+                        userController.user.value.profilePicture.isNotEmpty
+                            ? FadeInImage.assetNetwork(
+                              placeholder: Images.profileImage,
+                              image: userController.user.value.profilePicture,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                              imageErrorBuilder: (context, error, stackTrace) {
+                                return Image.asset(
+                                  Images.profileImage,
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                );
+                              },
+                            )
+                            : Image.asset(
+                              Images.profileImage,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                  ),
                 ),
-              )),
+              ),
               UIConstants.sizedBoxWidth10,
               Expanded(
                 child: Column(
@@ -63,15 +66,17 @@ class HeaderWidget extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     UIConstants.sizedBoxHeight2,
-                    Obx(() => Text(
-                      userController.user.value.fullName.isNotEmpty 
-                        ? userController.user.value.fullName
-                        : userController.user.value.username.isNotEmpty
-                          ? userController.user.value.username 
-                          : 'Guest User',
-                      style: UIConstants.textStyle18BoldBlack,
-                      overflow: TextOverflow.ellipsis,
-                    )),
+                    Obx(
+                      () => Text(
+                        userController.user.value.fullName.isNotEmpty
+                            ? userController.user.value.fullName
+                            : userController.user.value.username.isNotEmpty
+                            ? userController.user.value.username
+                            : 'Guest User',
+                        style: UIConstants.textStyle18BoldBlack,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -186,15 +191,6 @@ class HeaderWidget extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
-              const SizedBox(width: 10),
-              GestureDetector(
-                child: const Icon(
-                  Iconsax.logout,
-                  size: 28,
-                  color: Colors.black54,
-                ),
-                onTap: () => HomeController.instance.logout(),
               ),
             ],
           ),

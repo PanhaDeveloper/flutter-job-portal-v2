@@ -39,4 +39,12 @@ class Images {
   static const String usFlag = 'assets/general/en.png';
   static const String khFlag = 'assets/general/kh.png';
   static const String cnFlag = 'assets/general/ch.png';
+
+  // --- Auth Loading Animation ---
+  static const String authloadingAnimation =
+      'assets/lotties/141594-animation-of-docer.json';
+
+  // --- Verify Email Image ---
+  static const String verifyEmailImage =
+      'assets/general/sammy-line-man-receives-a-mail.png';
 }

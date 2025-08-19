@@ -49,7 +49,7 @@ class _PasswordSetupScreenState extends State<PasswordSetupScreen> {
                     color: AppColors.primary.withOpacity(0.1),
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Iconsax.password_check,
                     size: 64,
                     color: AppColors.primary,

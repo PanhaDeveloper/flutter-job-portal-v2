@@ -20,4 +20,5 @@ class AppRoutes {
   static const String noInternet = '/no-internet';
   static const String securitySetup = '/security-setup';
   static const String appLock = '/app-lock';
+  static const String checkScreen = '/check-screen';
 }

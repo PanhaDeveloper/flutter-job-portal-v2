@@ -12,9 +12,13 @@ class GeneralRepo extends GetxController {
   }
 
   Future<void> checkInternetConnection() async {
-    if (!await NetworkManager.instance.isConnected()) {
-      Get.toNamed(AppRoutes.noInternet);
-      return;
+    try {
+      final connected = await NetworkManager.instance.isConnected();
+      if (!connected) {
+        Get.offNamed(AppRoutes.noInternet);
+      }
+    } catch (e) {
+      Get.offNamed(AppRoutes.noInternet);
     }
   }
 }

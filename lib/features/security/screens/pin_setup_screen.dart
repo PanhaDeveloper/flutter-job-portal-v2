@@ -23,7 +23,6 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
   bool _isCurrentPinValid = false;
   bool _showNewPinInput = false;
   bool _showConfirmPinInput = false;
-  bool _isLoading = false;
 
   @override
   void initState() {
@@ -54,7 +53,7 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
                   color: AppColors.primary.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.lock_outline,
                   size: 64,
                   color: AppColors.primary,
@@ -290,7 +289,6 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
   void _onConfirmPinCompleted(String pin) async {
     if (_newPinController.text == pin) {
       setState(() {
-        _isLoading = true;
       });
 
       try {
@@ -312,7 +310,6 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
         _showError('something_went_wrong'.tr);
       } finally {
         setState(() {
-          _isLoading = false;
         });
       }
     } else {
