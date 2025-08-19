@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:job_app/cores/shared/app_bar_widget.dart';
 import 'package:job_app/features/home/accounts/widgets/menu_item.dart';
+import 'package:job_app/features/security/screens/security_setup_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -73,6 +74,26 @@ class SettingsScreen extends StatelessWidget {
                     'email_notification_settings_coming_soon'.tr,
                     snackPosition: SnackPosition.BOTTOM,
                   );
+                },
+              ),
+              
+              const SizedBox(height: 24),
+              
+              // Security Settings Section
+              Text(
+                'security_settings'.tr,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 12),
+              MenuItem(
+                icon: Iconsax.shield_security,
+                title: 'app_security'.tr,
+                onTap: () {
+                  Get.to(() => const SecuritySetupScreen());
                 },
               ),
               

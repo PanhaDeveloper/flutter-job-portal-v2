@@ -9,6 +9,7 @@ import 'package:job_app/app.dart';
 import 'package:job_app/cores/repo/general_repo.dart';
 import 'package:job_app/cores/utils/performance/performance_monitor.dart';
 import 'package:job_app/cores/utils/performance/performance_config.dart';
+import 'package:job_app/cores/utils/security/app_lifecycle_manager.dart';
 import 'package:job_app/firebase_options.dart';
 
 void main() async {
@@ -43,6 +44,10 @@ void main() async {
 
   // Initialize storage
   await GetStorage.init();
+
+  // Initialize security lifecycle manager
+  final appLifecycleManager = AppLifecycleManager();
+  appLifecycleManager.initialize();
 
   Get.put(GeneralRepo());
 

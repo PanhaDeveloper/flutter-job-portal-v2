@@ -23,6 +23,9 @@ import 'package:job_app/features/onboarding/binding/onboarding_binding.dart';
 import 'package:job_app/features/splash/binding/splash_binding.dart';
 import 'package:job_app/features/splash/screen/splash_screen.dart';
 import 'package:job_app/features/onboarding/screen/boarding_screen.dart';
+import 'package:job_app/features/security/screens/security_setup_screen.dart';
+import 'package:job_app/features/security/screens/app_lock_screen.dart';
+import 'package:job_app/cores/utils/security/security_middleware.dart';
 import 'package:job_app/navigate.dart';
 import 'package:job_app/routes/app_routes.dart';
 
@@ -63,47 +66,81 @@ final appPages = [
 
   GetPage(name: AppRoutes.authSuccess, page: () => const AuthSuccessScreen()),
 
-  GetPage(name: AppRoutes.home, page: () => const AppNavigateBar()),
+  GetPage(name: AppRoutes.home, page: () => const AppNavigateBar(), middlewares: [
+    SecurityMiddleware(),
+  ]),
 
   GetPage(
     name: AppRoutes.personalProfile,
     page: () => const PersonalProfileScreen(),
+    middlewares: [SecurityMiddleware()],
   ),
 
-  GetPage(name: AppRoutes.notification, page: () => const NotificationScreen()),
+  GetPage(
+    name: AppRoutes.notification, 
+    page: () => const NotificationScreen(),
+    middlewares: [SecurityMiddleware()],
+  ),
 
   GetPage(
     name: AppRoutes.changePassword,
     page: () => const ChangePasswordScreen(),
     binding: ChangePasswordBinding(),
+    middlewares: [SecurityMiddleware()],
   ),
 
   GetPage(
     name: AppRoutes.settings,
     page: () => const SettingsScreen(),
+    middlewares: [SecurityMiddleware()],
   ),
 
-  GetPage(name: AppRoutes.favoriteJobs, page: () => const FavoriteScreen()),
+  GetPage(
+    name: AppRoutes.favoriteJobs, 
+    page: () => const FavoriteScreen(),
+    middlewares: [SecurityMiddleware()],
+  ),
 
   GetPage(
     name: AppRoutes.jobDetail,
     page: () => const JobDetailScreen(),
     binding: JobDetailBinding(),
+    middlewares: [SecurityMiddleware()],
   ),
 
   GetPage(
     name: AppRoutes.applyNow,
     page: () => const ApplyNowScreen(),
     binding: ApplyNowBinding(),
+    middlewares: [SecurityMiddleware()],
   ),
 
-  GetPage(name: AppRoutes.previewPdf, page: () => PreviewPdfScreen()),
+  GetPage(
+    name: AppRoutes.previewPdf, 
+    page: () => PreviewPdfScreen(),
+    middlewares: [SecurityMiddleware()],
+  ),
 
-  GetPage(name: AppRoutes.searchResult, page: () => const SearchResultScreen()),
+  GetPage(
+    name: AppRoutes.searchResult, 
+    page: () => const SearchResultScreen(),
+    middlewares: [SecurityMiddleware()],
+  ),
 
   GetPage(
     name: AppRoutes.noInternet,
     page: () => const NoInternetScreen(),
     binding: NoInternetBinding(),
+  ),
+
+  GetPage(
+    name: AppRoutes.securitySetup,
+    page: () => const SecuritySetupScreen(),
+    middlewares: [SecurityMiddleware()],
+  ),
+
+  GetPage(
+    name: AppRoutes.appLock,
+    page: () => const AppLockScreen(),
   ),
 ];

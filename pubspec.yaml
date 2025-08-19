@@ -37,6 +37,9 @@ dependencies:
   dotted_border: ^2.1.0
   flutter_pdfview: ^1.4.1+1
 
+  # Security
+  crypto: ^3.0.5
+
   # Performance Packages
   flutter_cache_manager: ^3.4.1
   shimmer: ^3.0.0
