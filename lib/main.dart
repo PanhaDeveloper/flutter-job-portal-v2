@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:job_app/app.dart';
+import 'package:job_app/cores/repo/general_repo.dart';
 import 'package:job_app/cores/utils/performance/performance_monitor.dart';
 import 'package:job_app/cores/utils/performance/performance_config.dart';
 import 'package:job_app/firebase_options.dart';
@@ -41,6 +43,8 @@ void main() async {
 
   // Initialize storage
   await GetStorage.init();
+
+  Get.put(GeneralRepo());
 
   runApp(const App());
 }

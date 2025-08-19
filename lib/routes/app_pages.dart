@@ -16,6 +16,8 @@ import 'package:job_app/features/home/jobdetail/binding/job_detail_binding.dart'
 import 'package:job_app/features/home/jobdetail/screens/job_detail_screen.dart';
 import 'package:job_app/features/home/notification/screens/notification_screen.dart';
 import 'package:job_app/features/home/search_result/screens/search_result_screen.dart';
+import 'package:job_app/features/network/binding/no_internet_binding.dart';
+import 'package:job_app/features/network/screens/no_internet_screen.dart';
 import 'package:job_app/features/onboarding/binding/onboarding_binding.dart';
 import 'package:job_app/features/splash/binding/splash_binding.dart';
 import 'package:job_app/features/splash/screen/splash_screen.dart';
@@ -92,4 +94,10 @@ final appPages = [
   GetPage(name: AppRoutes.previewPdf, page: () => PreviewPdfScreen()),
 
   GetPage(name: AppRoutes.searchResult, page: () => const SearchResultScreen()),
+
+  GetPage(
+    name: AppRoutes.noInternet,
+    page: () => const NoInternetScreen(),
+    binding: NoInternetBinding(),
+  ),
 ];
