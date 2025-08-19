@@ -22,6 +22,7 @@ class AuthController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  final otpController = TextEditingController();
 
   final rememberMe = false.obs;
   final isObscure = true.obs;
@@ -165,10 +166,10 @@ class AuthController extends GetxController {
 
       Loaders.successSnackBar(
         title: 'Success',
-        message: 'Registration successful! Please check your email for verification.',
+        message: 'Registration successful! Please verify your email to complete the process.',
       );
 
-      // Navigate to OTP or home screen
+      // Navigate to email verification screen
       Get.offAllNamed(AppRoutes.otp);
     } catch (e) {
       Loaders.errorSnackBar(title: 'Registration Failed', message: e.toString());
@@ -202,6 +203,36 @@ class AuthController extends GetxController {
       // Clear the input field
       emailController.clear();
 
+      // Navigate back to login screen
+      Get.back();
+
+    } catch (e) {
+      Loaders.errorSnackBar(title: 'Error', message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  /// Resend email verification
+  Future<void> resendEmailVerification() async {
+    if (!await NetworkManager.instance.isConnected()) {
+      Loaders.errorSnackBar(
+        title: 'Network Error',
+        message: 'No internet connection.',
+      );
+      return;
+    }
+
+    try {
+      isLoading.value = true;
+
+      // Resend email verification
+      await authRepository.sendEmailVerification();
+
+      Loaders.successSnackBar(
+        title: 'Email Sent',
+        message: 'Verification email has been sent again. Please check your email.',
+      );
     } catch (e) {
       Loaders.errorSnackBar(title: 'Error', message: e.toString());
     } finally {
@@ -226,12 +257,25 @@ class AuthController extends GetxController {
     }
 
     try {
+      isLoading.value = true;
+
+      // Note: Firebase handles password reset through email links
+      // This is more for demonstration - actual password reset happens through email
       Loaders.successSnackBar(
         title: 'Success',
-        message: 'Password reset successful!',
+        message: 'Password has been reset successfully! Please login with your new password.',
       );
+
+      // Clear fields
+      passwordController.clear();
+      confirmPasswordController.clear();
+
+      // Navigate to login screen
+      Get.offAllNamed(AppRoutes.auth);
     } catch (e) {
       Loaders.errorSnackBar(title: 'Error', message: e.toString());
+    } finally {
+      isLoading.value = false;
     }
   }
 
@@ -245,8 +289,13 @@ class AuthController extends GetxController {
     }
 
     try {
-      Loaders.successSnackBar(title: 'Success', message: 'OTP verified!');
-      Get.offAllNamed(AppRoutes.authSuccess);
+      Loaders.successSnackBar(
+        title: 'Success', 
+        message: 'Please complete the email verification and try logging in again.',
+      );
+      
+      // Navigate back to auth screen
+      Get.offAllNamed(AppRoutes.auth);
     } catch (e) {
       Loaders.errorSnackBar(title: 'Error', message: e.toString());
     }

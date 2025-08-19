@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:job_app/features/auth/controllers/auth_controller.dart';
 import 'package:pinput/pinput.dart';
 import 'package:job_app/cores/shared/button_widget.dart';
