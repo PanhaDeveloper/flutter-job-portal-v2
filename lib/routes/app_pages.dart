@@ -2,8 +2,10 @@ import 'package:get/get.dart';
 import 'package:job_app/features/auth/bindings/auth_binding.dart';
 import 'package:job_app/features/auth/screen/auth_screen.dart';
 import 'package:job_app/features/auth/screen/auth_success_screen.dart';
+import 'package:job_app/features/auth/screen/check_email_screen.dart';
 import 'package:job_app/features/auth/screen/forgot_password_screen.dart';
 import 'package:job_app/features/auth/screen/otp_screen.dart';
+import 'package:job_app/features/auth/screen/password_reset_success_screen.dart';
 import 'package:job_app/features/auth/screen/reset_password_screen.dart';
 import 'package:job_app/features/home/accounts/binding/change_password_binding.dart';
 import 'package:job_app/features/home/accounts/screens/change_password_screen.dart';
@@ -41,7 +43,11 @@ final appPages = [
     page: () => const OnBoardingScreen(),
     binding: OnboardingBinding(),
   ),
-  GetPage(name: AppRoutes.auth, page: () => AuthScreen()),
+  GetPage(
+    name: AppRoutes.auth,
+    page: () => AuthScreen(),
+    binding: AuthBinding(),
+  ),
 
   GetPage(
     name: AppRoutes.forgotPassword,
@@ -50,8 +56,20 @@ final appPages = [
   ),
 
   GetPage(
+    name: AppRoutes.checkEmail,
+    page: () => const CheckEmailScreen(),
+    binding: AuthBinding(),
+  ),
+
+  GetPage(
     name: AppRoutes.resetPassword,
     page: () => const ResetPasswordScreen(),
+    binding: AuthBinding(),
+  ),
+
+  GetPage(
+    name: AppRoutes.passwordResetSuccess,
+    page: () => const PasswordResetSuccessScreen(),
     binding: AuthBinding(),
   ),
 

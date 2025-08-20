@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -9,9 +8,7 @@ import 'package:job_app/cores/utils/exceptions/firebase_exceptions.dart'
     as firebase_exceptions;
 import 'package:job_app/cores/utils/exceptions/format_exceptions.dart'
     as format_exceptions;
-import 'package:job_app/features/auth/screen/auth_screen.dart';
 import 'package:job_app/features/auth/screen/verify_screen.dart';
-import 'package:job_app/features/onboarding/screen/boarding_screen.dart';
 import 'package:job_app/features/personalization/controllers/user_controller.dart';
 import 'package:job_app/routes/app_routes.dart';
 
@@ -47,8 +44,8 @@ class AuthenticationRepository extends GetxController {
 
       deviceStorage.writeIfNull('isFirstTime', true);
       deviceStorage.read('isFirstTime') != true
-          ? Get.offAll(() => AuthScreen())
-          : Get.offAll(() => const OnBoardingScreen());
+          ? Get.offAllNamed(AppRoutes.auth)
+          : Get.offAllNamed(AppRoutes.onboarding);
     }
   }
 
@@ -205,9 +202,31 @@ class AuthenticationRepository extends GetxController {
   /// [LogoutUser] - Valid for any authentication.
   Future<void> logout() async {
     try {
-      await _googleSignIn.signOut();
+      // Check if user is currently authenticated
+      if (_auth.currentUser == null) {
+        // User is already logged out, just navigate to auth screen
+        Get.offAllNamed(AppRoutes.auth);
+        return;
+      }
+
+      // Sign out from Google if signed in
+      if (await _googleSignIn.isSignedIn()) {
+        await _googleSignIn.signOut();
+      }
+      
+      // Sign out from Firebase
       await _auth.signOut();
-      Get.offAll(() => AuthScreen());
+      
+      // Clear any stored user data
+      final storage = GetStorage();
+      await storage.erase();
+      
+      // Clear any GetX controllers that might hold user data
+      Get.delete<UserController>(force: true);
+      
+      // Navigate to auth screen and clear all previous routes
+      Get.offAllNamed(AppRoutes.auth);
+      
     } on FirebaseAuthException catch (e) {
       throw auth_exceptions.FirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

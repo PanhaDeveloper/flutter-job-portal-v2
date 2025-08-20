@@ -89,15 +89,23 @@ class AccountScreen extends StatelessWidget {
 
               // -------- Logout Button --------
               const SizedBox(height: 32),
-              ButtonWidget(
-                width: double.infinity,
-                height: 50,
-                btnTitle: 'logout'.tr,
-                btnBgColor: const Color(0xFFFF4757),
-                borderRadius: 15,
-                isIcon: true,
-                icon: Iconsax.logout,
-                onPressed: () => controller.logout(),
+              Obx(
+                () => ButtonWidget(
+                  width: double.infinity,
+                  height: 50,
+                  btnTitle: controller.isLoggingOut.value ? 'Logging out...' : 'logout'.tr,
+                  btnBgColor: controller.isLoggingOut.value 
+                    ? const Color(0xFFFF4757).withOpacity(0.6)
+                    : const Color(0xFFFF4757),
+                  borderRadius: 15,
+                  isIcon: true,
+                  icon: controller.isLoggingOut.value ? Icons.hourglass_empty : Iconsax.logout,
+                  onPressed: () {
+                    if (!controller.isLoggingOut.value) {
+                      controller.logout();
+                    }
+                  },
+                ),
               ),
             ],
           ),

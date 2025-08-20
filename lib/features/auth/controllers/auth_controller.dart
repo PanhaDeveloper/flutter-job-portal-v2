@@ -222,18 +222,17 @@ class AuthController extends GetxController {
       // Send password reset email
       await authRepository.sendPasswordResetEmail(emailController.text.trim());
 
-      Loaders.successSnackBar(
-        title: 'Success',
-        message: 'Password reset email sent. Please check your email.',
-      );
+      // Store the email for the check email screen
+      final email = emailController.text.trim();
 
       // Clear the input field
       emailController.clear();
 
-      // Navigate back to login screen
+      // Navigate to check email screen
       FullScreenLoader.stopLoading();
-      Get.back();
+      Get.toNamed(AppRoutes.checkEmail, arguments: email);
     } catch (e) {
+      FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(title: 'Error', message: e.toString());
     } finally {
       isLoading.value = false;
@@ -286,22 +285,25 @@ class AuthController extends GetxController {
 
     try {
       isLoading.value = true;
+      FullScreenLoader.openLoadingDialog(
+        'Resetting your password...',
+        Images.authloadingAnimation,
+      );
 
       // Note: Firebase handles password reset through email links
       // This is more for demonstration - actual password reset happens through email
-      Loaders.successSnackBar(
-        title: 'Success',
-        message:
-            'Password has been reset successfully! Please login with your new password.',
-      );
+      await Future.delayed(const Duration(seconds: 2)); // Simulate API call
 
+      FullScreenLoader.stopLoading();
+      
       // Clear fields
       passwordController.clear();
       confirmPasswordController.clear();
 
-      // Navigate to login screen
-      Get.offAllNamed(AppRoutes.auth);
+      // Navigate to success screen instead of showing snackbar
+      Get.offAllNamed(AppRoutes.passwordResetSuccess);
     } catch (e) {
+      FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(title: 'Error', message: e.toString());
     } finally {
       isLoading.value = false;

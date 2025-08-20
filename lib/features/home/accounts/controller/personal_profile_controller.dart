@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:job_app/cores/data/repositories/authentication/authentication_repository.dart';
 import 'package:job_app/cores/shared/image_source_button.dart';
 import 'package:job_app/cores/utils/helpers/network_manager.dart';
 import 'package:job_app/cores/utils/popups/alert_dialog.dart';
@@ -18,6 +19,7 @@ class PersonalProfileController extends GetxController {
 
   final Rx<File?> profileImage = Rx<File?>(null);
   final ImagePicker _picker = ImagePicker();
+  final RxBool isLoggingOut = false.obs;
 
   void showImagePickerOptions() {
     Get.bottomSheet(
@@ -96,8 +98,28 @@ class PersonalProfileController extends GetxController {
       subTitle: 'Do you really want to logout?',
       confirmText: 'Yes',
       cancelText: 'Cancel',
-      onConfirm: () {
-        // Get.offAllNamed('/login');
+      onConfirm: () async {
+        try {
+          isLoggingOut.value = true;
+          
+          // Close the dialog first
+          if (Get.isDialogOpen ?? false) {
+            Get.back();
+          }
+          
+          await AuthenticationRepository.instance.logout();
+        } catch (e) {
+          // Close any open dialogs first
+          if (Get.isDialogOpen ?? false) {
+            Get.back();
+          }
+          Loaders.errorSnackBar(
+            title: 'Logout Error',
+            message: e.toString(),
+          );
+        } finally {
+          isLoggingOut.value = false;
+        }
       },
       onCancel: () {},
     );
@@ -113,5 +135,14 @@ class PersonalProfileController extends GetxController {
       );
       return;
     }
+  }
+
+  @override
+  void onClose() {
+    username.dispose();
+    phone.dispose();
+    email.dispose();
+    address.dispose();
+    super.onClose();
   }
 }

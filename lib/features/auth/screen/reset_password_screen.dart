@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:job_app/cores/shared/button_widget.dart';
 import 'package:job_app/cores/shared/form_field_widget.dart';
@@ -76,10 +76,16 @@ class ResetPasswordScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              ButtonWidget(
-                width: double.infinity,
-                onPressed: () => controller.resetPassword(),
-                btnTitle: 'Reset Password',
+              Obx(
+                () => ButtonWidget(
+                  width: double.infinity,
+                  onPressed: () {
+                    if (!controller.isLoading.value) {
+                      controller.resetPassword();
+                    }
+                  },
+                  btnTitle: controller.isLoading.value ? 'Resetting...' : 'Reset Password',
+                ),
               ),
             ],
           ),
