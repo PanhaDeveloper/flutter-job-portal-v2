@@ -63,7 +63,6 @@ class ProfileScreen extends StatelessWidget {
                           Expanded(
                             child: ElevatedButton(
                               onPressed: () {
-                                // TODO: Navigate to edit profile screen
                                 Get.snackbar(
                                   'Coming Soon',
                                   'Profile editing will be implemented soon.',

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:job_app/app.dart';
 import 'package:job_app/cores/utils/performance/performance_monitor.dart';
@@ -39,6 +40,16 @@ void main() async {
 
   // Initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Initialize Facebook SDK for web platform
+  if (kIsWeb) {
+    await FacebookAuth.instance.webAndDesktopInitialize(
+      appId: '1057588443123693',
+      cookie: true,
+      xfbml: true,
+      version: 'v17.0',
+    );
+  }
 
   // Initialize storage
   await GetStorage.init();

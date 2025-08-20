@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -63,9 +64,9 @@ class AuthenticationRepository extends GetxController {
       );
 
       // Update user data after login
-      if (Get.isRegistered<UserController>()) {
-        Get.find<UserController>().fetchUserRecord();
-      }
+      // if (Get.isRegistered<UserController>()) {
+      //   Get.find<UserController>().fetchUserRecord();
+      // }
 
       return userCredential;
     } on FirebaseAuthException catch (e) {
@@ -197,6 +198,48 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  /// [FacebookAuthentication] - FACEBOOK
+  Future<UserCredential?> signInWithFacebook() async {
+    try {
+      // Trigger the authentication flow
+      final LoginResult result = await FacebookAuth.instance.login(
+        permissions: ['email', 'public_profile'],
+      );
+
+      if (result.status == LoginStatus.success) {
+        // Create a credential from the access token
+        final OAuthCredential credential = FacebookAuthProvider.credential(
+          result.accessToken!.tokenString,
+        );
+
+        // Once signed in, return the UserCredential
+        final UserCredential userCredential = await _auth.signInWithCredential(
+          credential,
+        );
+
+        // Save user data using UserController if this is a new user or fetch existing data
+        if (Get.isRegistered<UserController>()) {
+          final userController = Get.find<UserController>();
+          await userController.saveUserRecord(userCredential);
+          await userController.fetchUserRecord();
+        }
+
+        return userCredential;
+      } else {
+        throw 'Facebook sign-in was cancelled or failed: ${result.message}';
+      }
+    } on FirebaseAuthException catch (e) {
+      throw auth_exceptions.FirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw firebase_exceptions.FirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const format_exceptions.FormatException();
+    } catch (e) {
+      print('Facebook sign-in error: $e');
+      throw 'Something went wrong. Please try again: ${e.toString()}';
+    }
+  }
+
   /*------------ ./end Federated identity & Social sign-in -------------*/
 
   /// [LogoutUser] - Valid for any authentication.
@@ -213,20 +256,22 @@ class AuthenticationRepository extends GetxController {
       if (await _googleSignIn.isSignedIn()) {
         await _googleSignIn.signOut();
       }
-      
+
+      // Sign out from Facebook if signed in
+      await FacebookAuth.instance.logOut();
+
       // Sign out from Firebase
       await _auth.signOut();
-      
+
       // Clear any stored user data
       final storage = GetStorage();
       await storage.erase();
-      
+
       // Clear any GetX controllers that might hold user data
       Get.delete<UserController>(force: true);
-      
+
       // Navigate to auth screen and clear all previous routes
       Get.offAllNamed(AppRoutes.auth);
-      
     } on FirebaseAuthException catch (e) {
       throw auth_exceptions.FirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

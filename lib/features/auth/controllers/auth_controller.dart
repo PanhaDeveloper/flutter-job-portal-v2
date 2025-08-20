@@ -81,6 +81,39 @@ class AuthController extends GetxController {
     }
   }
 
+  /// Facebook Sign In
+  Future<void> facebookSignIn() async {
+    if (!await NetworkManager.instance.isConnected()) {
+      Loaders.errorSnackBar(
+        title: 'Network Error',
+        message: 'No internet connection.',
+      );
+      return;
+    }
+
+    try {
+      isLoading.value = true;
+
+      // Sign in with Facebook
+      await authRepository.signInWithFacebook();
+
+      Loaders.successSnackBar(
+        title: 'Success',
+        message: 'Facebook sign-in successful!',
+      );
+
+      // Navigate to home screen
+      Get.offAllNamed(AppRoutes.home);
+    } catch (e) {
+      Loaders.errorSnackBar(
+        title: 'Facebook Sign In Failed',
+        message: e.toString(),
+      );
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   Future<void> login() async {
     if (!(formKey.currentState?.validate() ?? false)) return;
 
@@ -167,6 +200,7 @@ class AuthController extends GetxController {
       await userRepository.saveUserRecord(newUser);
 
       // Update UserController with new user data
+
       // if (Get.isRegistered<UserController>()) {
       //   Get.find<UserController>().fetchUserRecord();
       // }
@@ -295,7 +329,7 @@ class AuthController extends GetxController {
       await Future.delayed(const Duration(seconds: 2)); // Simulate API call
 
       FullScreenLoader.stopLoading();
-      
+
       // Clear fields
       passwordController.clear();
       confirmPasswordController.clear();

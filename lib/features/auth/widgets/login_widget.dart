@@ -25,7 +25,7 @@ class LoginWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () {},
+              onTap: () => controller.facebookSignIn(),
               child: const SocialMediaIcon(iconPath: Images.facebookIcon),
             ),
             const SizedBox(width: Sizes.spaceBtwInputFields),
@@ -125,7 +125,8 @@ class LoginWidget extends StatelessWidget {
                       controller.login();
                     }
                   },
-                  btnTitle: controller.isLoading.value ? 'Signing In...' : 'Login',
+                  btnTitle:
+                      controller.isLoading.value ? 'Signing In...' : 'Login',
                 ),
               ),
             ],
