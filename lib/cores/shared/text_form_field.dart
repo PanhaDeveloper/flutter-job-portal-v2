@@ -13,6 +13,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final Widget? prefixIcon;
   final int? maxLines;
   final TextInputType keyboardType;
+  final bool readOnly;
 
   const TextFormFieldWidget({
     super.key,
@@ -26,6 +27,7 @@ class TextFormFieldWidget extends StatelessWidget {
     this.prefixIcon,
     this.maxLines = 1,
     this.keyboardType = TextInputType.text,
+    this.readOnly = false,
   });
 
   @override
@@ -34,6 +36,7 @@ class TextFormFieldWidget extends StatelessWidget {
       maxLines: maxLines,
       controller: controller,
       validator: validator,
+      readOnly: readOnly,
       style: const TextStyle(color: Colors.black),
       keyboardType: keyboardType,
       decoration: InputDecoration(

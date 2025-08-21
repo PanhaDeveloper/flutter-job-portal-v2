@@ -36,8 +36,8 @@ class App extends StatelessWidget {
 
       // Localization
       translations: Localization(),
-      locale: const Locale('km', 'KH'),
-      fallbackLocale: const Locale('en', 'US'),
+      locale: const Locale('en', 'US'),
+      fallbackLocale: const Locale('km', 'KH'),
 
       // Additional performance optimizations
       smartManagement: SmartManagement.keepFactory,

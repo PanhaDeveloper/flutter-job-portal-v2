@@ -7,12 +7,15 @@ import 'package:job_app/cores/shared/text_form_field.dart';
 import 'package:job_app/cores/utils/validators/validation.dart';
 import 'package:job_app/features/home/accounts/controller/personal_profile_controller.dart';
 import 'package:job_app/features/home/accounts/widgets/profile_img.dart';
+import 'package:job_app/features/personalization/controllers/user_controller.dart';
 
 class PersonalProfileScreen extends StatelessWidget {
   const PersonalProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Ensure UserController is initialized
+    Get.put(UserController());
     final controller = Get.put(PersonalProfileController());
 
     return Scaffold(
@@ -25,7 +28,39 @@ class PersonalProfileScreen extends StatelessWidget {
             children: [
               // Profile Image
               ProfileImg(controller: controller),
-              // Username Field
+              
+              // First Name and Last Name Row
+              Row(
+                children: [
+                  Expanded(
+                    child: FormFieldWidget(
+                      titleColor: Colors.black87,
+                      textTitle: 'First Name',
+                      horizontalPadding: 0,
+                      formField: TextFormFieldWidget(
+                        controller: controller.firstName,
+                        hintText: 'Enter your first name',
+                        validator: (value) => Validator.validateEmptyString(value),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: FormFieldWidget(
+                      titleColor: Colors.black87,
+                      textTitle: 'Last Name',
+                      horizontalPadding: 0,
+                      formField: TextFormFieldWidget(
+                        controller: controller.lastName,
+                        hintText: 'Enter your last name',
+                        validator: (value) => Validator.validateEmptyString(value),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              
+              // Username Field (Read-only)
               FormFieldWidget(
                 titleColor: Colors.black87,
                 textTitle: 'Username',
@@ -33,6 +68,7 @@ class PersonalProfileScreen extends StatelessWidget {
                 formField: TextFormFieldWidget(
                   controller: controller.username,
                   hintText: 'Enter your username',
+                  readOnly: true, // Make username read-only
                   validator: (value) => Validator.validateEmptyString(value),
                 ),
               ),
@@ -73,7 +109,7 @@ class PersonalProfileScreen extends StatelessWidget {
                 ),
               ),
 
-              // Email Field
+              // Email Field (Read-only)
               FormFieldWidget(
                 titleColor: Colors.black87,
                 textTitle: 'Email',
@@ -81,6 +117,7 @@ class PersonalProfileScreen extends StatelessWidget {
                 formField: TextFormFieldWidget(
                   controller: controller.email,
                   hintText: 'Enter your email',
+                  readOnly: true, // Make email read-only
                   validator: (value) => Validator.validateEmail(value),
                 ),
               ),
@@ -101,12 +138,18 @@ class PersonalProfileScreen extends StatelessWidget {
               const SizedBox(height: 30),
 
               // Save Button
-              ButtonWidget(
-                width: double.infinity,
-                height: 50,
-                btnTitle: 'Save Changes',
-                borderRadius: 15,
-                onPressed: () => controller.saveChange(),
+              Obx(
+                () => ButtonWidget(
+                  width: double.infinity,
+                  height: 50,
+                  btnTitle: controller.isSaving.value ? 'Saving...' : 'Save Changes',
+                  borderRadius: 15,
+                  onPressed: () {
+                    if (!controller.isSaving.value) {
+                      controller.saveChange();
+                    }
+                  },
+                ),
               ),
               const SizedBox(height: 30),
             ],

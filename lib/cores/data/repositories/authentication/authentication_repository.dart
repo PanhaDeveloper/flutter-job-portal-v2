@@ -30,20 +30,44 @@ class AuthenticationRepository extends GetxController {
   Future<void> screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
-      // if (Get.isRegistered<UserController>()) {
-      //   Get.find<UserController>().fetchUserRecord();
-      // }
+      // Initialize UserController if not already done
+      if (Get.isRegistered<UserController>()) {
+        Get.find<UserController>().fetchUserRecord();
+      }
 
-      if (user.emailVerified) {
+      // Reload user to get the latest email verification status
+      await user.reload();
+      final updatedUser = _auth.currentUser;
+
+      if (updatedUser != null && updatedUser.emailVerified) {
+        // User is authenticated and verified, go to home
         Get.offAllNamed(AppRoutes.home);
       } else {
-        Get.offAll(() => VerifyEmailScreen(email: user.email));
+        // Check if this is a social login user (they don't need email verification)
+        bool isSocialLogin = false;
+        if (updatedUser != null) {
+          for (UserInfo userInfo in updatedUser.providerData) {
+            if (userInfo.providerId == 'google.com' || userInfo.providerId == 'facebook.com') {
+              isSocialLogin = true;
+              break;
+            }
+          }
+        }
+        
+        if (isSocialLogin) {
+          // Social login users don't need email verification
+          Get.offAllNamed(AppRoutes.home);
+        } else {
+          // User is logged in but not verified, go to email verification
+          Get.offAll(() => VerifyEmailScreen(email: updatedUser?.email));
+        }
       }
     } else {
       print('================= GET STORAGE AUTH REPO ===============');
       print(deviceStorage.read('isFirstTime'));
 
       deviceStorage.writeIfNull('isFirstTime', true);
+      // User is not logged in, check if first time or not
       deviceStorage.read('isFirstTime') != true
           ? Get.offAllNamed(AppRoutes.auth)
           : Get.offAllNamed(AppRoutes.onboarding);
@@ -156,6 +180,21 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  /// [ChangePassword] - Update User Password
+  Future<void> updatePassword(String newPassword) async {
+    try {
+      await _auth.currentUser!.updatePassword(newPassword);
+    } on FirebaseAuthException catch (e) {
+      throw auth_exceptions.FirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw firebase_exceptions.FirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const format_exceptions.FormatException();
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
   /*------------ Federated identity & Social sign-in -------------*/
 
   /// [GoogleAuthentication] - GOOGLE
@@ -194,7 +233,7 @@ class AuthenticationRepository extends GetxController {
     } on FormatException catch (_) {
       throw const format_exceptions.FormatException();
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw e.toString();
     }
   }
 
@@ -207,6 +246,11 @@ class AuthenticationRepository extends GetxController {
       );
 
       if (result.status == LoginStatus.success) {
+        // Get additional user data from Facebook to get high-quality profile picture
+        final userData = await FacebookAuth.instance.getUserData(
+          fields: 'name,email,picture.width(200).height(200)',
+        );
+
         // Create a credential from the access token
         final OAuthCredential credential = FacebookAuthProvider.credential(
           result.accessToken!.tokenString,
@@ -216,6 +260,15 @@ class AuthenticationRepository extends GetxController {
         final UserCredential userCredential = await _auth.signInWithCredential(
           credential,
         );
+
+        // Update the user's photo URL with high-quality Facebook picture
+        if (userData['picture'] != null && userData['picture']['data'] != null) {
+          final highQualityPhotoURL = userData['picture']['data']['url'];
+          if (highQualityPhotoURL != null) {
+            // Update the Firebase user profile with the high-quality picture
+            await userCredential.user?.updatePhotoURL(highQualityPhotoURL);
+          }
+        }
 
         // Save user data using UserController if this is a new user or fetch existing data
         if (Get.isRegistered<UserController>()) {
@@ -270,7 +323,8 @@ class AuthenticationRepository extends GetxController {
       // Clear any GetX controllers that might hold user data
       Get.delete<UserController>(force: true);
 
-      // Navigate to auth screen and clear all previous routes
+      print('AuthMiddleware: User logged out');
+
       Get.offAllNamed(AppRoutes.auth);
     } on FirebaseAuthException catch (e) {
       throw auth_exceptions.FirebaseAuthException(e.code).message;
@@ -279,6 +333,7 @@ class AuthenticationRepository extends GetxController {
     } on FormatException catch (_) {
       throw const format_exceptions.FormatException();
     } catch (e) {
+      print(e.toString());
       throw 'Something went wrong. Please try again';
     }
   }

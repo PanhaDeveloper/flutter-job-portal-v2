@@ -162,6 +162,7 @@ class Localization extends Translations {
       'success': 'Success',
       'error': 'Error',
       'something_went_wrong': 'Something went wrong',
+      'review': 'Review',
     },
     'km_KH': {
       'welcome': 'សូមស្វាគមន៍',
@@ -322,6 +323,7 @@ class Localization extends Translations {
       'success': 'ជោគជ័យ',
       'error': 'កំហុស',
       'something_went_wrong': 'មានអ្វីមួយខុសប្រក្រតី',
+      'review': 'មតិយោបល់',
     },
     'zh_CN': {
       'welcome': '欢迎',
@@ -482,6 +484,7 @@ class Localization extends Translations {
       'success': '成功',
       'error': '错误',
       'something_went_wrong': '出现了问题',
+      'review': '评论'
     },
   };
 }

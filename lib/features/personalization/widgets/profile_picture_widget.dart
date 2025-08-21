@@ -109,6 +109,14 @@ class ProfilePictureWidget extends StatelessWidget {
                 _showComingSoonDialog();
               },
             ),
+            ListTile(
+              leading: const Icon(Iconsax.refresh, color: Colors.blue),
+              title: const Text('Refresh from Social Media'),
+              onTap: () {
+                Get.back();
+                controller.fetchSocialMediaProfilePicture();
+              },
+            ),
             if (controller.user.value.profilePicture.isNotEmpty)
               ListTile(
                 leading: const Icon(Iconsax.trash, color: Colors.red),

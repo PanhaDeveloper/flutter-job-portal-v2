@@ -59,7 +59,10 @@ class AuthSuccessWidget extends StatelessWidget {
           ),
           ButtonWidget(
             width: 180,
-            onPressed: onPressed,
+            onPressed: () {
+              print('AuthSuccessWidget: Close button pressed, calling onPressed callback');
+              onPressed();
+            },
             btnTitle: 'Close',
             btnBgColor: AppColors.white,
             btnTextColor: AppColors.boldPrimary,

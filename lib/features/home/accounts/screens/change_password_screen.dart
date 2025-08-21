@@ -34,6 +34,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       horizontalPadding: 0,
                       formField: Obx(
                         () => TextFormFieldWidget(
+                          controller: controller.currentPasswordField,
                           hintText: 'Enter your current password',
                           isPassword: true,
                           isObscure: controller.currentPassword.value,
@@ -56,6 +57,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       horizontalPadding: 0,
                       formField: Obx(
                         () => TextFormFieldWidget(
+                          controller: controller.newPasswordField,
                           hintText: 'Enter your new password',
                           isPassword: true,
                           isObscure: controller.newPassword.value,
@@ -76,6 +78,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       horizontalPadding: 0,
                       formField: Obx(
                         () => TextFormFieldWidget(
+                          controller: controller.confirmNewPasswordField,
                           isObscure: controller.confirmNewPassword.value,
                           isPassword: true,
                           hintText: 'Re-enter your new password',
@@ -87,19 +90,30 @@ class ChangePasswordScreen extends StatelessWidget {
                               controller.confirmNewPassword.value
                                   ? Iconsax.eye
                                   : Iconsax.eye_slash,
-                          validator:
-                              (value) => Validator.validatePassword(value),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please confirm your new password';
+                            }
+                            if (value != controller.newPasswordField.text) {
+                              return 'Passwords do not match';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                     ),
                     const SizedBox(height: 30),
 
                     // Save Button
-                    ButtonWidget(
-                      width: double.infinity,
-                      btnTitle: 'save_changes'.tr,
-                      borderRadius: 15,
-                      onPressed: () => controller.changePassword(),
+                    Obx(
+                      () => ButtonWidget(
+                        width: double.infinity,
+                        btnTitle: 'save_changes'.tr,
+                        borderRadius: 15,
+                        onPressed: controller.isLoading.value 
+                            ? () {} 
+                            : () => controller.changePassword(),
+                      ),
                     ),
                   ],
                 ),

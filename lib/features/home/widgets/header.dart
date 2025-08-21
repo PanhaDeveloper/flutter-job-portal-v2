@@ -25,17 +25,28 @@ class HeaderWidget extends StatelessWidget {
             children: [
               Obx(
                 () => GestureDetector(
-                  onTap: () => Get.to(() => const ProfileScreen()),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child:
-                        userController.user.value.profilePicture.isNotEmpty
-                            ? FadeInImage.assetNetwork(
+                  onTap: () {},
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.grey.shade200,
+                        width: 2,
+                      ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: userController.user.value.profilePicture.isNotEmpty
+                          ? FadeInImage.assetNetwork(
                               placeholder: Images.profileImage,
                               image: userController.user.value.profilePicture,
                               width: 50,
                               height: 50,
                               fit: BoxFit.cover,
+                              fadeInDuration: const Duration(milliseconds: 300),
+                              fadeOutDuration: const Duration(milliseconds: 100),
                               imageErrorBuilder: (context, error, stackTrace) {
                                 return Image.asset(
                                   Images.profileImage,
@@ -45,12 +56,13 @@ class HeaderWidget extends StatelessWidget {
                                 );
                               },
                             )
-                            : Image.asset(
+                          : Image.asset(
                               Images.profileImage,
                               width: 50,
                               height: 50,
                               fit: BoxFit.cover,
                             ),
+                    ),
                   ),
                 ),
               ),

@@ -29,6 +29,7 @@ void main() async {
       statusBarBrightness: Brightness.dark,
       systemNavigationBarColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
+      
     ),
   );
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:job_app/features/home/accounts/controller/personal_profile_controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProfileImg extends StatelessWidget {
   const ProfileImg({super.key, required this.controller});
@@ -12,7 +13,8 @@ class ProfileImg extends StatelessWidget {
     return GestureDetector(
       onTap: controller.showImagePickerOptions,
       child: Obx(() {
-        final image = controller.profileImage.value;
+        final localImage = controller.profileImage.value;
+        final networkImageUrl = controller.userController.user.value.profilePicture;
 
         return Container(
           width: 100,
@@ -29,34 +31,63 @@ class ProfileImg extends StatelessWidget {
               ),
             ],
           ),
-          child:
-              image != null
-                  ? ClipRRect(
-                    borderRadius: BorderRadius.circular(60),
-                    child: Image.file(image, fit: BoxFit.cover),
-                  )
-                  : Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      const Icon(Icons.person, size: 60, color: Colors.grey),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          padding: const EdgeInsets.all(4),
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Icons.camera_alt,
-                            size: 16,
-                            color: Colors.white,
-                          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: localImage != null
+                ? Image.file(localImage, fit: BoxFit.cover)
+                : networkImageUrl.isNotEmpty
+                    ? CachedNetworkImage(
+                        imageUrl: networkImageUrl,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => const Center(
+                          child: CircularProgressIndicator(),
                         ),
+                        errorWidget: (context, url, error) => Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            const Icon(Icons.person, size: 60, color: Colors.grey),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: const BoxDecoration(
+                                  color: Colors.blue,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(
+                                  Icons.camera_alt,
+                                  size: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          const Icon(Icons.person, size: 60, color: Colors.grey),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: const BoxDecoration(
+                                color: Colors.blue,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.camera_alt,
+                                size: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+          ),
         );
       }),
     );

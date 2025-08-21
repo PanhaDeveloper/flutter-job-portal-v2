@@ -42,8 +42,9 @@ class JobDetailScreen extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.all(16),
-                      child: Wrap(
-                        runSpacing: 12,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
                             'Share to',
@@ -102,7 +103,9 @@ class JobDetailScreen extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.only(bottom: 80), // Space for bottom sheet
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const JobBox(
               logoTitle: 'gojek',
@@ -113,6 +116,7 @@ class JobDetailScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   JobTab(controller: controller),
                   const SizedBox(height: 20),
@@ -127,15 +131,16 @@ class JobDetailScreen extends StatelessWidget {
                             ).animate(animation),
                             child: child,
                           ),
-                      child:
-                          controller.selectedIndex.value == 0
-                              ? const TabDescription(key: ValueKey('desc'))
-                              : controller.selectedIndex.value == 1
-                              ? const TabCompany(key: ValueKey('company'))
-                              : const TabReview(key: ValueKey('review')),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: controller.selectedIndex.value == 0
+                            ? const TabDescription(key: ValueKey('desc'))
+                            : controller.selectedIndex.value == 1
+                            ? const TabCompany(key: ValueKey('company'))
+                            : const TabReview(key: ValueKey('review')),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 80),
                 ],
               ),
             ),

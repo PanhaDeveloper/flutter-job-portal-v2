@@ -7,6 +7,7 @@ import 'package:job_app/features/auth/screen/forgot_password_screen.dart';
 import 'package:job_app/features/auth/screen/otp_screen.dart';
 import 'package:job_app/features/auth/screen/password_reset_success_screen.dart';
 import 'package:job_app/features/auth/screen/reset_password_screen.dart';
+import 'package:job_app/features/auth/screen/verify_screen.dart';
 import 'package:job_app/features/home/accounts/binding/change_password_binding.dart';
 import 'package:job_app/features/home/accounts/screens/change_password_screen.dart';
 import 'package:job_app/features/home/accounts/screens/personal_profile_screen.dart';
@@ -58,6 +59,12 @@ final appPages = [
   GetPage(
     name: AppRoutes.checkEmail,
     page: () => const CheckEmailScreen(),
+    binding: AuthBinding(),
+  ),
+
+  GetPage(
+    name: AppRoutes.verifyEmail,
+    page: () => const VerifyEmailScreen(),
     binding: AuthBinding(),
   ),
 

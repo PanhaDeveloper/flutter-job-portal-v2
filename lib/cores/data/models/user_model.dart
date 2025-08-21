@@ -9,6 +9,7 @@ class UserModel {
   final String email;
   String phoneNumber;
   String profilePicture;
+  String address;
 
   /// Constructor for UserModel
   UserModel({
@@ -19,6 +20,7 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
+    required this.address,
   });
 
   /// Helper function to get the full name.
@@ -26,6 +28,29 @@ class UserModel {
 
   /// Helper function to format phone number.
   String get formattedPhoneNo => phoneNumber.isNotEmpty ? phoneNumber : 'No phone number';
+
+  /// Copy with method for creating modified copies
+  UserModel copyWith({
+    String? id,
+    String? firstName,
+    String? lastName,
+    String? username,
+    String? email,
+    String? phoneNumber,
+    String? profilePicture,
+    String? address,
+  }) {
+    return UserModel(
+      id: id ?? this.id,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      username: username ?? this.username,
+      email: email ?? this.email,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      profilePicture: profilePicture ?? this.profilePicture,
+      address: address ?? this.address,
+    );
+  }
 
   /// Static function to split full name into first and last name.
   static List<String> nameParts(String fullName) => fullName.split(' ');
@@ -50,6 +75,7 @@ class UserModel {
     email: '',
     phoneNumber: '',
     profilePicture: '',
+    address: '',
   );
 
   /// Convert model to JSON structure for storing data in Firebase.
@@ -61,6 +87,7 @@ class UserModel {
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
+      'Address': address,
     };
   }
 
@@ -76,6 +103,7 @@ class UserModel {
         email: data['Email'] ?? '',
         phoneNumber: data['PhoneNumber'] ?? '',
         profilePicture: data['ProfilePicture'] ?? '',
+        address: data['Address'] ?? '',
       );
     } else {
       return UserModel.empty();

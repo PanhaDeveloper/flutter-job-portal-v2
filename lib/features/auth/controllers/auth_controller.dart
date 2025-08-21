@@ -69,8 +69,8 @@ class AuthController extends GetxController {
         message: 'Google sign-in successful!',
       );
 
-      // Navigate to home screen
-      Get.offAllNamed(AppRoutes.home);
+      // Use screenRedirect to handle proper navigation
+      authRepository.screenRedirect();
     } catch (e) {
       Loaders.errorSnackBar(
         title: 'Google Sign In Failed',
@@ -102,8 +102,8 @@ class AuthController extends GetxController {
         message: 'Facebook sign-in successful!',
       );
 
-      // Navigate to home screen
-      Get.offAllNamed(AppRoutes.home);
+      // Use screenRedirect to handle proper navigation
+      authRepository.screenRedirect();
     } catch (e) {
       Loaders.errorSnackBar(
         title: 'Facebook Sign In Failed',
@@ -145,10 +145,13 @@ class AuthController extends GetxController {
 
       FullScreenLoader.stopLoading();
 
-      Get.offAllNamed(AppRoutes.home);
+      // Use screenRedirect to handle proper navigation based on verification status
+      authRepository.screenRedirect();
     } catch (e) {
+      FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(title: 'Login Failed', message: e.toString());
     } finally {
+      FullScreenLoader.stopLoading();
       isLoading.value = false;
     }
   }
@@ -195,6 +198,7 @@ class AuthController extends GetxController {
         email: emailController.text.trim(),
         phoneNumber: '',
         profilePicture: '',
+        address: '',
       );
 
       await userRepository.saveUserRecord(newUser);
@@ -206,7 +210,7 @@ class AuthController extends GetxController {
       // }
 
       // Send email verification
-      // await authRepository.sendEmailVerification();
+      await authRepository.sendEmailVerification();
 
       // Clear the input fields
       firstNameController.clear();
@@ -226,11 +230,13 @@ class AuthController extends GetxController {
       // Navigate to email verification screen
       Get.to(() => VerifyEmailScreen(email: emailController.text.trim()));
     } catch (e) {
+      FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(
         title: 'Registration Failed',
         message: e.toString(),
       );
     } finally {
+      FullScreenLoader.stopLoading();
       isLoading.value = false;
     }
   }

@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:job_app/cores/data/repositories/authentication/authentication_repository.dart';
 import 'package:job_app/cores/shared/button_widget.dart';
 import 'package:job_app/cores/utils/constants/colors.dart';
 import 'package:job_app/cores/utils/constants/image_strings.dart';
 import 'package:job_app/features/auth/controllers/email_verify_controller.dart';
+import 'package:job_app/routes/app_routes.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   final String? email;
@@ -29,7 +31,17 @@ class VerifyEmailScreen extends StatelessWidget {
               CupertinoIcons.clear,
               color: AppColors.textSecondary,
             ),
-            onPressed: () => AuthenticationRepository.instance.logout(),
+            onPressed: () {
+              // Check if user is verified before logging out
+              final user = FirebaseAuth.instance.currentUser;
+              if (user != null && user.emailVerified) {
+                // User is verified, go to home
+                Get.offAllNamed(AppRoutes.home);
+              } else {
+                // User is not verified, logout and go to auth
+                AuthenticationRepository.instance.logout();
+              }
+            },
           ),
         ],
       ),
